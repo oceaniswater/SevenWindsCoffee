@@ -10,12 +10,13 @@ import UIKit
 final class AuthTextField: UITextField {
     
     // MARK: - Private Properties
-    private let padding = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 20)
-    private let leftViewpadding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    private var padding: UIEdgeInsets!
+    private let leftViewpadding = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 10)
     
     // MARK: - Initializers
     init(symbol: String?, placeholder: String) {
         super.init(frame: .zero)
+        padding = UIEdgeInsets(top: 0, left: symbol != nil ? 40 : 18, bottom: 0, right: 20)
         setupTextField(symbol: symbol ?? "", placeholder: placeholder)
     }
     
@@ -43,14 +44,14 @@ final class AuthTextField: UITextField {
     
     // MARK: - Private Methods
     private func setupTextField(symbol: String, placeholder: String) {
-        textColor = .black
+        textColor = K.Design.primaryTextColor
         
         layer.cornerRadius = 25
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.brown.cgColor
+        layer.borderWidth = 2
+        layer.borderColor = K.Design.primaryTextColor?.cgColor
         backgroundColor = .white
         
-        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: K.Design.secondTextColor ?? .systemGray])
         font = .systemFont(ofSize: 15)
         
         // Create an SF Symbol configuration

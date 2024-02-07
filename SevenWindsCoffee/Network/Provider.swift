@@ -17,7 +17,7 @@ enum CoffeeShopAPI {
 
 extension CoffeeShopAPI: TargetType {
     var baseURL: URL {
-        return URL(string: "http://147.78.66.203:3210")!
+        return URL(string: K.Network.server)!
     }
     
     //nscurl http://147.78.66.203:3210 --verbose --ats-diagnostics

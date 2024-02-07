@@ -28,11 +28,12 @@ class LoginViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 15.0)
         label.textAlignment = .left
         label.text = "e-mail"
+        label.tintColor = K.Design.primaryTextColor
         return label
     }()
     
     var emailTextField: UITextField = {
-        let textField = AuthTextField(symbol: "envelope", placeholder: "example@example.ru")
+        let textField = AuthTextField(symbol: nil, placeholder: "example@example.ru")
         textField.tag = 0
         textField.text = "1234567@gamil.com"
         return textField
@@ -43,22 +44,25 @@ class LoginViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 15.0)
         label.textAlignment = .left
         label.text = "Пароль"
+        label.tintColor = K.Design.primaryTextColor
         return label
     }()
     
     var passwordTextField: UITextField = {
-        let textField = AuthTextField(symbol: "lock", placeholder: "******")
+        let textField = AuthTextField(symbol: nil, placeholder: "******")
         textField.tag = 1
         textField.isSecureTextEntry = true
         textField.text = "12347889"
         return textField
     }()
     
-    var signInButton: UIButton = {
+    var logInButton: UIButton = {
         let button = UIButton()
         button.setTitle("Войти", for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = .black
+        button.tintColor = K.Design.buttonTextColor
+        button.backgroundColor = K.Design.buttonColor
+        button.layer.borderColor = K.Design.buttonBorderColor?.cgColor
+        button.layer.borderWidth = 1
         button.layer.cornerRadius = 25
         return button
     }()
@@ -68,16 +72,27 @@ class LoginViewController: UIViewController {
     
     let formView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = K.Design.primaryBackroundColor
         return view
     }()
+    
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = K.Design.secondBackroundColor
+        view.layer.borderColor = K.Design.separatorColor?.cgColor
+        view.layer.borderWidth = 0.5
+        return view
+    }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Вход"
-        navigationController?.navigationBar.backgroundColor = .systemGray
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.brown]
+        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
+        
         
         setupView()
     }
@@ -102,12 +117,12 @@ extension LoginViewController: LoginViewProtocol {
 // MARK: - Setup View
 private extension LoginViewController {
     func setupView() {
-        view.backgroundColor = .systemGray
+        view.backgroundColor = K.Design.secondBackroundColor
         
         addSubview()
         setupLayout()
         
-        signInButton.addAction(
+        logInButton.addAction(
             UIAction { [weak self] _ in
                 self?.loggingButtonTaped()
             },
@@ -121,6 +136,7 @@ private extension LoginViewController {
     func addSubview() {
         
         view.addSubview(formView)
+        view.addSubview(separatorView)
         
         emailStack = UIStackView(arrangedSubviews: [emailLabel, emailTextField])
         emailStack.axis = .vertical
@@ -138,7 +154,7 @@ private extension LoginViewController {
         
         view.addSubview(passwordStack)
         
-        view.addSubview(signInButton)
+        view.addSubview(logInButton)
     }
 }
 
@@ -149,6 +165,12 @@ private extension LoginViewController {
         formView.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalToSuperview()
+        }
+        
+        separatorView.snp.makeConstraints { make in
+            make.height.equalTo(2)
+            make.width.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide)
         }
         
         emailTextField.snp.makeConstraints { make in
@@ -173,7 +195,7 @@ private extension LoginViewController {
             make.height.equalTo(73)
         }
     
-        signInButton.snp.makeConstraints { make in
+        logInButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(478)
             make.width.equalTo(338)
             make.height.equalTo(48)
