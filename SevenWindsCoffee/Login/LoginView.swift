@@ -79,7 +79,7 @@ class LoginViewController: UIViewController {
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = K.Design.secondBackroundColor
-        view.layer.borderColor = K.Design.separatorColor?.cgColor
+        view.layer.borderColor = K.Design.separatorLineColor?.cgColor
         view.layer.borderWidth = 0.5
         return view
     }()

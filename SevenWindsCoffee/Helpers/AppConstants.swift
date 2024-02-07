@@ -22,7 +22,7 @@ struct K {
         static let buttonColor = UIColor(named: "buttonColor")
         static let buttonBorderColor = UIColor(named: "buttonBorderColor")
         
-        static let separatorColor = UIColor(named: "separatorColor")
+        static let separatorLineColor = UIColor(named: "separatorLineColor")
     }
     
     struct Network {
