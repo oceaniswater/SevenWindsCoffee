@@ -66,23 +66,20 @@ class LoginViewController: UIViewController {
     var emailStack: UIStackView!
     var passwordStack: UIStackView!
     
+    let formView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the title directly
-        title = "Your Title"
-        
-        // Alternatively, customize the navigation item
-        navigationItem.title = "Your Custom Title"
-        
-        // You can also customize the appearance of the navigation bar
-        navigationController?.navigationBar.barTintColor = UIColor.blue
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationItem.title = "Вход"
+        navigationController?.navigationBar.backgroundColor = .systemGray
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.brown]
         
         setupView()
-
-        // Do any additional setup after loading the view.
     }
     
     func loggingButtonTaped() {
@@ -105,7 +102,7 @@ extension LoginViewController: LoginViewProtocol {
 // MARK: - Setup View
 private extension LoginViewController {
     func setupView() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray
         
         addSubview()
         setupLayout()
@@ -122,6 +119,8 @@ private extension LoginViewController {
 // MARK: - Setting View
 private extension LoginViewController {
     func addSubview() {
+        
+        view.addSubview(formView)
         
         emailStack = UIStackView(arrangedSubviews: [emailLabel, emailTextField])
         emailStack.axis = .vertical
@@ -146,6 +145,11 @@ private extension LoginViewController {
 // MARK: - Setup Layout
 private extension LoginViewController {
     func setupLayout() {
+        
+        formView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalToSuperview()
+        }
         
         emailTextField.snp.makeConstraints { make in
             make.height.equalTo(48)

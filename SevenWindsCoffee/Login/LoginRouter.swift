@@ -16,10 +16,11 @@ protocol AnyRouterProtocol {
 }
 
 protocol LoginRouterProtocol: AnyRouterProtocol {
+    func navigateToCofeeShops()
 }
 
 class LoginRouter: LoginRouterProtocol {
-    var entryPoint: EntryPoint?
+    weak var entryPoint: EntryPoint?
     
     static func start() -> AnyRouterProtocol {
         let router = LoginRouter()
@@ -38,6 +39,12 @@ class LoginRouter: LoginRouterProtocol {
         router.entryPoint = view as? EntryPoint
         
         return router
+    }
+    
+    func navigateToCofeeShops() {
+        let coffeShopsRouter = CoffeeShopsRouter.start()
+        guard let vc = coffeShopsRouter.entryPoint else { return }
+        entryPoint?.navigationController?.pushViewController(vc, animated: true)
     }
     
     

@@ -1,5 +1,5 @@
 //
-//  LoginPresenter.swift
+//  CoffeeShopsPresenter.swift
 //  SevenWindsCoffee
 //
 //  Created by Mark Golubev on 07/02/2024.
@@ -7,20 +7,20 @@
 
 import Foundation
 
-protocol LoginPresenterProtocol {
-    var router: LoginRouterProtocol? {get set}
-    var interactor: LoginInteractorPtotocol? {get set}
-    var view: LoginViewProtocol? {get set}
+protocol CoffeeShopsPresenterProtocol {
+    var router: CoffeeShopsRouterProtocol? {get set}
+    var interactor: CoffeeShopsInteractorPtotocol? {get set}
+    var view: CoffeeShopsViewProtocol? {get set}
     
     func loginButtonTapped(login: String, password: String)
     func loginSuccess(token: String, tokenLifetime: TimeInterval)
     func loginError(message: String)
 }
 
-class LoginPresenter: LoginPresenterProtocol, LoginInteractorOutputProtocol {
-    var router: LoginRouterProtocol?
-    var interactor: LoginInteractorPtotocol?
-    var view: LoginViewProtocol?
+class CoffeShopsPresenter: CoffeeShopsPresenterProtocol, CoffeeShopsInteractorOutputProtocol {
+    var router: CoffeeShopsRouterProtocol?
+    var interactor: CoffeeShopsInteractorPtotocol?
+    var view: CoffeeShopsViewProtocol?
     
     
     func loginButtonTapped(login: String, password: String) {
@@ -29,10 +29,10 @@ class LoginPresenter: LoginPresenterProtocol, LoginInteractorOutputProtocol {
     
     func loginSuccess(token: String, tokenLifetime: TimeInterval) {
         view?.showLoginSuccess(token: token, tokenLifetime: tokenLifetime)
-        router?.navigateToCofeeShops()
     }
     
     func loginError(message: String) {
         view?.showLoginError(message: message)
     }
 }
+

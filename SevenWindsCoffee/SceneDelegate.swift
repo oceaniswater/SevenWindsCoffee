@@ -19,7 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let initialVC = loginRouter.entryPoint
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = initialVC
+        guard let initialVC = initialVC else { return }
+        let navigationVC = UINavigationController(rootViewController: initialVC)
+        window.rootViewController = navigationVC
         self.window = window
         window.makeKeyAndVisible()
     }
