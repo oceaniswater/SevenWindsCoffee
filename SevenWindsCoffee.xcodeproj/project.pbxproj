@@ -30,6 +30,8 @@
 		86D637FF2B740208008550D3 /* CoffeShopsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637FE2B740208008550D3 /* CoffeShopsPresenter.swift */; };
 		86D638012B740387008550D3 /* CoffeeShopsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638002B740387008550D3 /* CoffeeShopsEntity.swift */; };
 		86D638032B740413008550D3 /* CoffeeShopsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638022B740413008550D3 /* CoffeeShopsRouter.swift */; };
+		86D638052B742D29008550D3 /* CoffeeShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638042B742D29008550D3 /* CoffeeShopTableViewCell.swift */; };
+		86D638072B743538008550D3 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638062B743538008550D3 /* AppConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		86D637FE2B740208008550D3 /* CoffeShopsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeShopsPresenter.swift; sourceTree = "<group>"; };
 		86D638002B740387008550D3 /* CoffeeShopsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopsEntity.swift; sourceTree = "<group>"; };
 		86D638022B740413008550D3 /* CoffeeShopsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopsRouter.swift; sourceTree = "<group>"; };
+		86D638042B742D29008550D3 /* CoffeeShopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopTableViewCell.swift; sourceTree = "<group>"; };
+		86D638062B743538008550D3 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				86D637F42B73F0AE008550D3 /* KeychainHelper.swift */,
+				86D638062B743538008550D3 /* AppConstants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 				86D637FE2B740208008550D3 /* CoffeShopsPresenter.swift */,
 				86D638002B740387008550D3 /* CoffeeShopsEntity.swift */,
 				86D638022B740413008550D3 /* CoffeeShopsRouter.swift */,
+				86D638042B742D29008550D3 /* CoffeeShopTableViewCell.swift */,
 			);
 			path = CoffeeShops;
 			sourceTree = "<group>";
@@ -236,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86D637EF2B73BB10008550D3 /* LoginEntity.swift in Sources */,
+				86D638072B743538008550D3 /* AppConstants.swift in Sources */,
 				86D637F22B73CC80008550D3 /* AuthTextField.swift in Sources */,
 				86D637C12B73AB18008550D3 /* AppDelegate.swift in Sources */,
 				86D637F52B73F0AE008550D3 /* KeychainHelper.swift in Sources */,
@@ -248,6 +255,7 @@
 				86D638032B740413008550D3 /* CoffeeShopsRouter.swift in Sources */,
 				86D637DC2B73B4D0008550D3 /* LoginRouter.swift in Sources */,
 				86D637FD2B74018B008550D3 /* CoffeeShopsInteractor.swift in Sources */,
+				86D638052B742D29008550D3 /* CoffeeShopTableViewCell.swift in Sources */,
 				86D638012B740387008550D3 /* CoffeeShopsEntity.swift in Sources */,
 				86D637D82B73B45F008550D3 /* LoginPresenter.swift in Sources */,
 			);
