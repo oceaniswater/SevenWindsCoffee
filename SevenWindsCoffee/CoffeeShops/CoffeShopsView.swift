@@ -12,7 +12,7 @@ import Foundation
 protocol CoffeeShopsViewProtocol: AnyViewProtocol {
     var presenter: CoffeeShopsPresenterProtocol? {get set}
     func fetchShopSuccess()
-    func showLoginError(message: String)
+    func showFetchError(message: String)
 }
 
 class CoffeeShopsViewController: UIViewController {
@@ -50,6 +50,17 @@ class CoffeeShopsViewController: UIViewController {
         setupView()
         setupTableView()
         
+        LocationManager.shared.startUpdatingLocation { [weak self] success in
+            guard let self = self else { return }
+            
+            if success {
+                // User granted location permission, reload table view
+                self.reloadTableView()
+            } else {
+                // Handle case where location permission is not granted
+            }
+        }
+        
         presenter?.fetchCoffeeShops()
     }
     
@@ -64,10 +75,10 @@ class CoffeeShopsViewController: UIViewController {
 
 extension CoffeeShopsViewController: CoffeeShopsViewProtocol {
     func fetchShopSuccess() {
-        tableView.reloadData()
+        reloadTableView()
     }
     
-    func showLoginError(message: String) {
+    func showFetchError(message: String) {
         print(message)
     }
 }

@@ -73,7 +73,10 @@ class CoffeeShopTableViewCell: UITableViewCell {
     // MARK: - Public methods
     func configure(with shop: CoffeeShopsEntityElement) {
         nameLabel.text = shop.name
-        locationLabel.text = "20 км от вас"
+        guard let destination = LocationManager.shared.calculateDistanceToPoint(point: shop.point) else { 
+            locationLabel.text = "где-то недалеко"
+            return }
+        locationLabel.text = destination > 1 ? "\(Int(destination)) км от вас" : "\(Int(destination * 1000)) м от вас"
     }
 }
 

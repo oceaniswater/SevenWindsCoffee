@@ -45,7 +45,7 @@ class CoffeShopsPresenter: CoffeeShopsPresenterProtocol, CoffeeShopsInteractorOu
     }
     
     func fetchError(message: String) {
-        view?.showLoginError(message: message)
+        view?.showFetchError(message: message)
     }
     
     func numberOfSections() -> Int {

@@ -33,6 +33,7 @@
 		86D638052B742D29008550D3 /* CoffeeShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638042B742D29008550D3 /* CoffeeShopTableViewCell.swift */; };
 		86D638072B743538008550D3 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638062B743538008550D3 /* AppConstants.swift */; };
 		86D638092B74D936008550D3 /* CoffeeShopsView+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638082B74D936008550D3 /* CoffeeShopsView+TableView.swift */; };
+		86D6380B2B74EE21008550D3 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D6380A2B74EE21008550D3 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		86D638042B742D29008550D3 /* CoffeeShopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopTableViewCell.swift; sourceTree = "<group>"; };
 		86D638062B743538008550D3 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		86D638082B74D936008550D3 /* CoffeeShopsView+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoffeeShopsView+TableView.swift"; sourceTree = "<group>"; };
+		86D6380A2B74EE21008550D3 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			children = (
 				86D637F42B73F0AE008550D3 /* KeychainHelper.swift */,
 				86D638062B743538008550D3 /* AppConstants.swift */,
+				86D6380A2B74EE21008550D3 /* LocationManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				86D637FD2B74018B008550D3 /* CoffeeShopsInteractor.swift in Sources */,
 				86D638052B742D29008550D3 /* CoffeeShopTableViewCell.swift in Sources */,
 				86D638012B740387008550D3 /* CoffeeShopsEntity.swift in Sources */,
+				86D6380B2B74EE21008550D3 /* LocationManager.swift in Sources */,
 				86D637D82B73B45F008550D3 /* LoginPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
