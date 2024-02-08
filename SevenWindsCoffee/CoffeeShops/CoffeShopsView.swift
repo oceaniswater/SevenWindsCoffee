@@ -19,6 +19,13 @@ class CoffeeShopsViewController: UIViewController {
     
     var presenter: CoffeeShopsPresenterProtocol?
     
+    let tableView: UITableView = {
+        let table = UITableView()
+        table.backgroundColor = K.Design.primaryBackroundColor
+        table.separatorStyle = .none
+        return table
+    }()
+    
     var onMapButton: UIButton = {
         let button = UIButton()
         button.setTitle("На карте", for: .normal)
@@ -27,16 +34,25 @@ class CoffeeShopsViewController: UIViewController {
         button.layer.cornerRadius = 25
         return button
     }()
+    
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = K.Design.secondBackroundColor
+        view.layer.borderColor = K.Design.separatorLineColor?.cgColor
+        view.layer.borderWidth = 0.5
+        return view
+    }()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Coffe Shops"
-        navigationController?.navigationBar.backgroundColor = .systemGray
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.brown]
+        navigationItem.title = "Ближайшие кофейни"
+        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
         
         setupView()
+        setupTableView()
     }
     
     func onMapButtonTaped() {
@@ -74,7 +90,9 @@ private extension CoffeeShopsViewController {
 // MARK: - Setting View
 private extension CoffeeShopsViewController {
     func addSubview() {
-        view.backgroundColor = .white
+        view.backgroundColor = K.Design.secondBackroundColor
+        view.addSubview(tableView)
+        view.addSubview(separatorView)
         view.addSubview(onMapButton)
     }
 }
@@ -82,6 +100,19 @@ private extension CoffeeShopsViewController {
 // MARK: - Setup Layout
 private extension CoffeeShopsViewController {
     func setupLayout() {
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview()
+        }
+        
+        separatorView.snp.makeConstraints { make in
+            make.height.equalTo(2)
+            make.width.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide)
+        }
         
         onMapButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(732)

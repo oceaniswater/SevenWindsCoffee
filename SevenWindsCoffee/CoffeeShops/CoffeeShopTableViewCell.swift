@@ -30,22 +30,26 @@ class CoffeeShopTableViewCell: UITableViewCell {
     // MARK: - Private properties
     private let view: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = K.Design.cellColor
         view.layer.cornerRadius = 5
+        view.layer.shadowColor = K.Design.separatorLineColor?.cgColor
+        view.layer.shadowOpacity = 1
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 1
         return view
     }()
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.tintColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = K.Design.primaryTextColor
         return label
     }()
     
     private let locationLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.tintColor = .black
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = K.Design.secondTextColor
         return label
     }()
     
@@ -62,9 +66,6 @@ class CoffeeShopTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         backgroundColor = .clear
-        
-//        layer.cornerRadius = 5
-//        clipsToBounds = true
     }
     
 
@@ -110,6 +111,7 @@ private extension CoffeeShopTableViewCell {
             make.edges.equalToSuperview()
             make.width.equalTo(349)
             make.height.equalTo(71)
+            make.bottom.equalToSuperview().inset(5)
         }
 
         vStack.snp.makeConstraints { make in

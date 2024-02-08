@@ -15,12 +15,18 @@ protocol CoffeeShopsPresenterProtocol {
     func loginButtonTapped(login: String, password: String)
     func loginSuccess(token: String, tokenLifetime: TimeInterval)
     func loginError(message: String)
+    
+    var shops: [CoffeeShopsEntityElement] { get set }
+    func numberOfSections() -> Int
+    func numberOfRows(in section: Int) -> Int
 }
 
 class CoffeShopsPresenter: CoffeeShopsPresenterProtocol, CoffeeShopsInteractorOutputProtocol {
     var router: CoffeeShopsRouterProtocol?
     var interactor: CoffeeShopsInteractorPtotocol?
     var view: CoffeeShopsViewProtocol?
+    
+    var shops: [CoffeeShopsEntityElement] = [CoffeeShopsEntityElement(id: 1, name: "Mac cafee", point: Point(latitude: "212312323", longitude: "1312312424")), CoffeeShopsEntityElement(id: 1, name: "Mac cafee", point: Point(latitude: "212312323", longitude: "1312312424")), CoffeeShopsEntityElement(id: 1, name: "Mac cafee", point: Point(latitude: "212312323", longitude: "1312312424")), CoffeeShopsEntityElement(id: 1, name: "Mac cafee", point: Point(latitude: "212312323", longitude: "1312312424"))]
     
     
     func loginButtonTapped(login: String, password: String) {
@@ -33,6 +39,14 @@ class CoffeShopsPresenter: CoffeeShopsPresenterProtocol, CoffeeShopsInteractorOu
     
     func loginError(message: String) {
         view?.showLoginError(message: message)
+    }
+    
+    func numberOfSections() -> Int {
+        1
+    }
+    
+    func numberOfRows(in section: Int) -> Int {
+        return self.shops.count
     }
 }
 
