@@ -11,7 +11,7 @@ import Foundation
 
 protocol CoffeeShopsViewProtocol: AnyViewProtocol {
     var presenter: CoffeeShopsPresenterProtocol? {get set}
-    func showLoginSuccess(token: String, tokenLifetime: TimeInterval)
+    func fetchShopSuccess()
     func showLoginError(message: String)
 }
 
@@ -47,12 +47,14 @@ class CoffeeShopsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Ближайшие кофейни"
-        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
-        
         setupView()
         setupTableView()
+        
+        presenter?.fetchCoffeeShops()
+    }
+    
+    func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     func onMapButtonTaped() {
@@ -61,8 +63,8 @@ class CoffeeShopsViewController: UIViewController {
 }
 
 extension CoffeeShopsViewController: CoffeeShopsViewProtocol {
-    func showLoginSuccess(token: String, tokenLifetime: TimeInterval) {
-        print(token)
+    func fetchShopSuccess() {
+        tableView.reloadData()
     }
     
     func showLoginError(message: String) {
@@ -75,9 +77,24 @@ private extension CoffeeShopsViewController {
     func setupView() {
         view.backgroundColor = .systemGray
         
+        navigationItem.title = "Ближайшие кофейни"
+        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
+        
+        let backButton = UIButton(type: .custom)
+        backButton.tintColor = K.Design.primaryTextColor
+        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        backButton.addAction(
+            UIAction { [weak self] _ in
+                self?.backButtonTapped()
+            },
+            for: .touchUpInside)
+        let backBarButtonItem = UIBarButtonItem(customView: backButton)
+        navigationItem.leftBarButtonItem = backBarButtonItem
+        
         addSubview()
         setupLayout()
-        
+
         onMapButton.addAction(
             UIAction { [weak self] _ in
                 self?.onMapButtonTaped()

@@ -15,7 +15,7 @@ protocol AnyViewProtocol: AnyObject {
 
 protocol LoginViewProtocol: AnyViewProtocol {
     var presenter: LoginPresenterProtocol? {get set}
-    func showLoginSuccess(token: String, tokenLifetime: TimeInterval)
+    func showLoginSuccess()
     func showLoginError(message: String)
 }
 
@@ -89,11 +89,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Вход"
-        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
-        
-        
         setupView()
     }
     
@@ -105,8 +100,7 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginViewProtocol {
-    func showLoginSuccess(token: String, tokenLifetime: TimeInterval) {
-        print(token)
+    func showLoginSuccess() {
     }
     
     func showLoginError(message: String) {
@@ -118,6 +112,10 @@ extension LoginViewController: LoginViewProtocol {
 private extension LoginViewController {
     func setupView() {
         view.backgroundColor = K.Design.secondBackroundColor
+        
+        navigationItem.title = "Вход"
+        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
         
         addSubview()
         setupLayout()

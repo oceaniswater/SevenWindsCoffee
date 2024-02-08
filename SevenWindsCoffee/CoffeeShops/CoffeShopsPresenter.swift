@@ -12,9 +12,9 @@ protocol CoffeeShopsPresenterProtocol {
     var interactor: CoffeeShopsInteractorPtotocol? {get set}
     var view: CoffeeShopsViewProtocol? {get set}
     
-    func loginButtonTapped(login: String, password: String)
-    func loginSuccess(token: String, tokenLifetime: TimeInterval)
-    func loginError(message: String)
+    func fetchCoffeeShops()
+    func fetchSuccess(shops: CoffeeShopsEntity)
+    func fetchError(message: String)
     
     var shops: [CoffeeShopsEntityElement] { get set }
     func numberOfSections() -> Int
@@ -22,22 +22,29 @@ protocol CoffeeShopsPresenterProtocol {
 }
 
 class CoffeShopsPresenter: CoffeeShopsPresenterProtocol, CoffeeShopsInteractorOutputProtocol {
+    
     var router: CoffeeShopsRouterProtocol?
     var interactor: CoffeeShopsInteractorPtotocol?
     var view: CoffeeShopsViewProtocol?
     
-    var shops: [CoffeeShopsEntityElement] = [CoffeeShopsEntityElement(id: 1, name: "Mac cafee", point: Point(latitude: "212312323", longitude: "1312312424")), CoffeeShopsEntityElement(id: 1, name: "Mac cafee", point: Point(latitude: "212312323", longitude: "1312312424")), CoffeeShopsEntityElement(id: 1, name: "Mac cafee", point: Point(latitude: "212312323", longitude: "1312312424")), CoffeeShopsEntityElement(id: 1, name: "Mac cafee", point: Point(latitude: "212312323", longitude: "1312312424"))]
+    var shops: CoffeeShopsEntity = []
     
-    
-    func loginButtonTapped(login: String, password: String) {
-        interactor?.loginUser(login: login, password: password)
+    init() {
+        fetchCoffeeShops()
     }
     
-    func loginSuccess(token: String, tokenLifetime: TimeInterval) {
-        view?.showLoginSuccess(token: token, tokenLifetime: tokenLifetime)
+    
+    func fetchCoffeeShops() {
+        guard let token = KeychainHelper.shared.getCredentials() else { return }
+        interactor?.fetchData(token: token)
     }
     
-    func loginError(message: String) {
+    func fetchSuccess(shops: [CoffeeShopsEntityElement]) {
+        self.shops = shops
+        view?.fetchShopSuccess()
+    }
+    
+    func fetchError(message: String) {
         view?.showLoginError(message: message)
     }
     

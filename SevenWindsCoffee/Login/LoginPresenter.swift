@@ -28,7 +28,8 @@ class LoginPresenter: LoginPresenterProtocol, LoginInteractorOutputProtocol {
     }
     
     func loginSuccess(token: String, tokenLifetime: TimeInterval) {
-        view?.showLoginSuccess(token: token, tokenLifetime: tokenLifetime)
+        KeychainHelper.shared.saveToken(token: token)
+        view?.showLoginSuccess()
         router?.navigateToCofeeShops()
     }
     
