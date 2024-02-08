@@ -9,6 +9,7 @@ import UIKit
 import Foundation
 
 protocol CoffeeShopsRouterProtocol: AnyRouterProtocol {
+    func navigateToMenu(id: Int)
 }
 
 class CoffeeShopsRouter: CoffeeShopsRouterProtocol {
@@ -33,8 +34,10 @@ class CoffeeShopsRouter: CoffeeShopsRouterProtocol {
         return router
     }
     
-    func goToCofeeShopsList() {
-        
+    func navigateToMenu(id: Int) {
+        let menuRouter = MenuRouter.start()
+        guard let vc = menuRouter.entryPoint else { return }
+        entryPoint?.navigationController?.pushViewController(vc, animated: true)
     }
     
     

@@ -1,5 +1,5 @@
 //
-//  CoffeeShopsView+TableView.swift
+//  MenuView+TableView.swift
 //  SevenWindsCoffee
 //
 //  Created by Mark Golubev on 08/02/2024.
@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
-extension CoffeeShopsViewController: UITableViewDelegate, UITableViewDataSource {
+extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
         self.tableView.delegate = self
@@ -19,7 +19,7 @@ extension CoffeeShopsViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func registerTableCell() {
-        tableView.register(CoffeeShopTableViewCell.self, forCellReuseIdentifier: CoffeeShopTableViewCell.identifier)
+        tableView.register(MenuItemTableViewCell.self, forCellReuseIdentifier: MenuItemTableViewCell.identifier)
     }
     
     func reloadTableView() {
@@ -37,20 +37,21 @@ extension CoffeeShopsViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CoffeeShopTableViewCell.identifier, for: indexPath) as? CoffeeShopTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemTableViewCell.identifier, for: indexPath) as? MenuItemTableViewCell else { return UITableViewCell() }
 
-        guard let shop = self.presenter?.shops[indexPath.row] else { return UITableViewCell() }
-        cell.configure(with: shop)
+        guard let item = self.presenter?.items[indexPath.row] else { return UITableViewCell() }
+        cell.configure(with: item)
         cell.selectionStyle = .none
         
         return cell
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let shopId = presenter?.shops[indexPath.row].id else { return }
-        presenter?.tapOnItem(id: shopId)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let character = presenter.characters?[indexPath.row]
+//        presenter.tapOnTheCharacter(character: character)
+//    }
     
     
 }
+
