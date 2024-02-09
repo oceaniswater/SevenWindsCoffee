@@ -82,7 +82,7 @@ private extension MenuViewController {
     func setupView() {
         view.backgroundColor = .systemGray
         
-        navigationItem.title = "Ближайшие кофейни"
+        navigationItem.title = "Меню"
         navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
         
@@ -125,8 +125,8 @@ private extension MenuViewController {
         
         menuCollection.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            make.leading.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().offset(-10)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalTo(onMapButton.snp.top)
         }
         

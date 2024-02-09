@@ -167,9 +167,6 @@ private extension MenuItemCollectionViewCell {
     func setupLayout() {
         view.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.width.equalTo(165)
-            make.height.equalTo(205)
-            make.bottom.equalToSuperview().inset(10)
         }
         
         productImageView.snp.makeConstraints { make in

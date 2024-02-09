@@ -54,7 +54,7 @@ class MenuPresenter: MenuPresenterProtocol, MenuInteractorOutputProtocol {
     }
     
     func numberOfSection() -> Int {
-        2
+        1
     }
     
     func numberOfItemsInSection(in section: Int) -> Int {
