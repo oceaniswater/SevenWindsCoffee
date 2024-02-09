@@ -27,7 +27,7 @@ class RegistrationInteractor: RegistrationInteractorPtotocol {
 
         let provider = MoyaProvider<CoffeeShopAPI>()
         
-        provider.request(.login(login: login, password: password)) { [weak self] result in
+        provider.request(.register(login: login, password: password)) { [weak self] result in
             switch result {
             case .success(let response):
                 // Handle success

@@ -133,6 +133,10 @@ class LoginViewController: UIViewController {
         presenter?.loginButtonTapped(login: email, password: password)
         view.endEditing(true)
     }
+    
+    func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 extension LoginViewController: LoginViewProtocol {
@@ -152,6 +156,17 @@ private extension LoginViewController {
         navigationItem.title = "Вход"
         navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
+        
+        let backButton = UIButton(type: .custom)
+        backButton.tintColor = K.Design.primaryTextColor
+        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        backButton.addAction(
+            UIAction { [weak self] _ in
+                self?.backButtonTapped()
+            },
+            for: .touchUpInside)
+        let backBarButtonItem = UIBarButtonItem(customView: backButton)
+        navigationItem.leftBarButtonItem = backBarButtonItem
         
         addSubview()
         setupLayout()

@@ -28,8 +28,7 @@ class RegistrationPresenter: RegistrationPresenterProtocol, RegistrationInteract
     }
     
     func loginSuccess(token: String, tokenLifetime: TimeInterval) {
-        KeychainHelper.shared.saveToken(token: token)
-        view?.showLoginSuccess()
+        view?.registerSuccess()
         router?.navigateToLogin()
     }
     

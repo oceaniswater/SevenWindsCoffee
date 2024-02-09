@@ -11,7 +11,7 @@ import Foundation
 
 protocol RegistrationViewProtocol: AnyViewProtocol {
     var presenter: RegistrationPresenterProtocol? {get set}
-    func showLoginSuccess()
+    func registerSuccess()
     func showLoginError(message: String)
 }
 
@@ -139,16 +139,35 @@ class RegistrationViewController: UIViewController {
     }
 
     
-    func loggingButtonTaped() {
+    func registerButtonTaped() {
         guard let email = emailTextField.text,
-              let password = passwordTextField.text else { return }
+              let password = passwordTextField.text,
+              let password2 = passwordRepeatTextField.text else { return }
+        guard !email.isEmpty, !password.isEmpty, !password2.isEmpty else {
+            DispatchQueue.main.async {
+                self.showAlert(title: "Ошибка", message: "Все поля должны быть заполненны", viewController: self)
+            }
+            return }
+        guard password == password2 else {
+            DispatchQueue.main.async {
+                self.showAlert(title: "Ошибка", message: "Пароли должны совпадать", viewController: self)
+            }
+            
+            return }
         presenter?.loginButtonTapped(login: email, password: password)
         view.endEditing(true)
+    }
+    
+    func showAlert(title: String, message: String, viewController: UIViewController) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        viewController.present(alert, animated: true, completion: nil)
     }
 }
 
 extension RegistrationViewController: RegistrationViewProtocol {
-    func showLoginSuccess() {
+    func registerSuccess() {
     }
     
     func showLoginError(message: String) {
@@ -170,7 +189,7 @@ private extension RegistrationViewController {
         
         registerButton.addAction(
             UIAction { [weak self] _ in
-                self?.loggingButtonTaped()
+                self?.registerButtonTaped()
             },
             for: .touchUpInside)
         
