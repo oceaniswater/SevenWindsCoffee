@@ -90,12 +90,48 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        
+        startObservingKeyobard()
     }
+    
+    deinit {
+        // Unregister from keyboard notifications when the view controller is deallocated
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func startObservingKeyobard() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if view.frame.origin.y == 0 {
+            view.frame.origin.y -= 40
+        }
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        if view.frame.origin.y != 0 {
+            view.frame.origin.y = 0
+        }
+    }
+
     
     func loggingButtonTaped() {
         guard let email = emailTextField.text,
               let password = passwordTextField.text else { return }
         presenter?.loginButtonTapped(login: email, password: password)
+        view.endEditing(true)
     }
 }
 

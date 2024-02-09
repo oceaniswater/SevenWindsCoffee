@@ -14,8 +14,6 @@ protocol MenuCollectionViewCellInput: AnyObject {
     var subtitle: String? { get set }
     var isCountable: Bool { get set }
     var handler: ((UInt) -> Void)? { get set }
-    func setImage(from data: Data)
-    func setPlaceholderImage()
     func startAnimating()
     func stopAnimating()
 }
@@ -186,6 +184,13 @@ private extension MenuItemCollectionViewCell {
     }
 }
 
+// MARK: - CounterDelegate
+extension MenuItemCollectionViewCell: CounterDelegate {
+    func didChanged(count: UInt) {
+        countHandler?(count)
+    }
+}
+
 extension MenuItemCollectionViewCell: MenuCollectionViewCellInput {
     var title: String? {
         get { nameLabel.text }
@@ -210,28 +215,12 @@ extension MenuItemCollectionViewCell: MenuCollectionViewCellInput {
         set { countHandler = newValue }
     }
 
-    func setImage(from data: Data) {
-        productImageView.image = UIImage(data: data)
-    }
-
-    func setPlaceholderImage() {
-        //
-    }
-
     func startAnimating() {
         loaderView.startAnimating()
     }
 
     func stopAnimating() {
         loaderView.stopAnimating()
-    }
-}
-
-// MARK: - CounterDelegate
-
-extension MenuItemCollectionViewCell: CounterDelegate {
-    func didChanged(count: UInt) {
-        countHandler?(count)
     }
 }
 

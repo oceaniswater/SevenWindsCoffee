@@ -16,7 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let loginRouter = LoginRouter.start()
-        let initialVC = loginRouter.entryPoint
+        let registrationRouter = RegistrationRouter.start()
+        
+        let initialVC = registrationRouter.entryPoint
         
         let window = UIWindow(windowScene: windowScene)
         guard let initialVC = initialVC else { return }
@@ -56,4 +58,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
-

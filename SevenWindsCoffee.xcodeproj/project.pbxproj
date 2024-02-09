@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		865A7CC42B76459F0002B765 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 865A7CC32B76459F0002B765 /* SDWebImage */; };
 		865A7CC62B76459F0002B765 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 865A7CC52B76459F0002B765 /* SDWebImageMapKit */; };
+		865A7CCC2B765C860002B765 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CCB2B765C860002B765 /* OrderView.swift */; };
+		865A7CCE2B765C940002B765 /* OrderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CCD2B765C940002B765 /* OrderInteractor.swift */; };
+		865A7CD02B765CA50002B765 /* OrderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CCF2B765CA50002B765 /* OrderPresenter.swift */; };
+		865A7CD22B765CB80002B765 /* OrderEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CD12B765CB80002B765 /* OrderEntity.swift */; };
+		865A7CD42B765CD00002B765 /* OrderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CD32B765CD00002B765 /* OrderRouter.swift */; };
+		865A7CD62B765D9A0002B765 /* OrderView+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CD52B765D9A0002B765 /* OrderView+TableView.swift */; };
+		865A7CD82B765DBA0002B765 /* OrderItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CD72B765DBA0002B765 /* OrderItemTableViewCell.swift */; };
+		865A7CDC2B7694BB0002B765 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CDB2B7694BB0002B765 /* RegistrationView.swift */; };
+		865A7CDE2B7694EC0002B765 /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CDD2B7694EC0002B765 /* RegistrationInteractor.swift */; };
+		865A7CE02B76950E0002B765 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CDF2B76950E0002B765 /* RegistrationPresenter.swift */; };
+		865A7CE22B7695210002B765 /* RegistrationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CE12B7695210002B765 /* RegistrationEntity.swift */; };
+		865A7CE42B76954B0002B765 /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CE32B76954B0002B765 /* RegistrationRouter.swift */; };
 		86D637C12B73AB18008550D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637C02B73AB18008550D3 /* AppDelegate.swift */; };
 		86D637C32B73AB18008550D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637C22B73AB18008550D3 /* SceneDelegate.swift */; };
 		86D637CA2B73AB19008550D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86D637C92B73AB19008550D3 /* Assets.xcassets */; };
@@ -29,7 +41,7 @@
 		86D637F82B73F0D1008550D3 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 86D637F72B73F0D1008550D3 /* KeychainSwift */; };
 		86D637FB2B74011B008550D3 /* CoffeShopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637FA2B74011B008550D3 /* CoffeShopsView.swift */; };
 		86D637FD2B74018B008550D3 /* CoffeeShopsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637FC2B74018B008550D3 /* CoffeeShopsInteractor.swift */; };
-		86D637FF2B740208008550D3 /* CoffeShopsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637FE2B740208008550D3 /* CoffeShopsPresenter.swift */; };
+		86D637FF2B740208008550D3 /* CoffeeShopsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637FE2B740208008550D3 /* CoffeeShopsPresenter.swift */; };
 		86D638012B740387008550D3 /* CoffeeShopsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638002B740387008550D3 /* CoffeeShopsEntity.swift */; };
 		86D638032B740413008550D3 /* CoffeeShopsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638022B740413008550D3 /* CoffeeShopsRouter.swift */; };
 		86D638052B742D29008550D3 /* CoffeeShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638042B742D29008550D3 /* CoffeeShopTableViewCell.swift */; };
@@ -47,6 +59,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		865A7CCB2B765C860002B765 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		865A7CCD2B765C940002B765 /* OrderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInteractor.swift; sourceTree = "<group>"; };
+		865A7CCF2B765CA50002B765 /* OrderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPresenter.swift; sourceTree = "<group>"; };
+		865A7CD12B765CB80002B765 /* OrderEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEntity.swift; sourceTree = "<group>"; };
+		865A7CD32B765CD00002B765 /* OrderRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRouter.swift; sourceTree = "<group>"; };
+		865A7CD52B765D9A0002B765 /* OrderView+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderView+TableView.swift"; sourceTree = "<group>"; };
+		865A7CD72B765DBA0002B765 /* OrderItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemTableViewCell.swift; sourceTree = "<group>"; };
+		865A7CDB2B7694BB0002B765 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		865A7CDD2B7694EC0002B765 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
+		865A7CDF2B76950E0002B765 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		865A7CE12B7695210002B765 /* RegistrationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEntity.swift; sourceTree = "<group>"; };
+		865A7CE32B76954B0002B765 /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
 		86D637BD2B73AB18008550D3 /* SevenWindsCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SevenWindsCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D637C02B73AB18008550D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86D637C22B73AB18008550D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +87,7 @@
 		86D637F42B73F0AE008550D3 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		86D637FA2B74011B008550D3 /* CoffeShopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeShopsView.swift; sourceTree = "<group>"; };
 		86D637FC2B74018B008550D3 /* CoffeeShopsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopsInteractor.swift; sourceTree = "<group>"; };
-		86D637FE2B740208008550D3 /* CoffeShopsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeShopsPresenter.swift; sourceTree = "<group>"; };
+		86D637FE2B740208008550D3 /* CoffeeShopsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopsPresenter.swift; sourceTree = "<group>"; };
 		86D638002B740387008550D3 /* CoffeeShopsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopsEntity.swift; sourceTree = "<group>"; };
 		86D638022B740413008550D3 /* CoffeeShopsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopsRouter.swift; sourceTree = "<group>"; };
 		86D638042B742D29008550D3 /* CoffeeShopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopTableViewCell.swift; sourceTree = "<group>"; };
@@ -106,6 +130,44 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		865A7CCA2B765C710002B765 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				865A7CCB2B765C860002B765 /* OrderView.swift */,
+				865A7CCD2B765C940002B765 /* OrderInteractor.swift */,
+				865A7CCF2B765CA50002B765 /* OrderPresenter.swift */,
+				865A7CD12B765CB80002B765 /* OrderEntity.swift */,
+				865A7CD32B765CD00002B765 /* OrderRouter.swift */,
+				865A7CD72B765DBA0002B765 /* OrderItemTableViewCell.swift */,
+				865A7CD52B765D9A0002B765 /* OrderView+TableView.swift */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		865A7CD92B7694550002B765 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				865A7CDA2B7694A30002B765 /* Registration */,
+				86D637D42B73B3D7008550D3 /* Login */,
+				86D637F92B7400E4008550D3 /* CoffeeShops */,
+				86D6380C2B750788008550D3 /* Menu */,
+				865A7CCA2B765C710002B765 /* Order */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		865A7CDA2B7694A30002B765 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				865A7CDB2B7694BB0002B765 /* RegistrationView.swift */,
+				865A7CDD2B7694EC0002B765 /* RegistrationInteractor.swift */,
+				865A7CDF2B76950E0002B765 /* RegistrationPresenter.swift */,
+				865A7CE12B7695210002B765 /* RegistrationEntity.swift */,
+				865A7CE32B76954B0002B765 /* RegistrationRouter.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
 		86D637B42B73AB18008550D3 = {
 			isa = PBXGroup;
 			children = (
@@ -128,9 +190,7 @@
 				865A7CC72B764A4B0002B765 /* Extensions */,
 				86D637F32B73F072008550D3 /* Helpers */,
 				86D637E22B73B83D008550D3 /* Network */,
-				86D637D42B73B3D7008550D3 /* Login */,
-				86D637F92B7400E4008550D3 /* CoffeeShops */,
-				86D6380C2B750788008550D3 /* Menu */,
+				865A7CD92B7694550002B765 /* Modules */,
 				86D637C02B73AB18008550D3 /* AppDelegate.swift */,
 				86D637C22B73AB18008550D3 /* SceneDelegate.swift */,
 				86D637C92B73AB19008550D3 /* Assets.xcassets */,
@@ -184,7 +244,7 @@
 			children = (
 				86D637FA2B74011B008550D3 /* CoffeShopsView.swift */,
 				86D637FC2B74018B008550D3 /* CoffeeShopsInteractor.swift */,
-				86D637FE2B740208008550D3 /* CoffeShopsPresenter.swift */,
+				86D637FE2B740208008550D3 /* CoffeeShopsPresenter.swift */,
 				86D638002B740387008550D3 /* CoffeeShopsEntity.swift */,
 				86D638022B740413008550D3 /* CoffeeShopsRouter.swift */,
 				86D638042B742D29008550D3 /* CoffeeShopTableViewCell.swift */,
@@ -305,30 +365,42 @@
 				86D638102B7508A0008550D3 /* MenuInteractor.swift in Sources */,
 				86D638142B750A02008550D3 /* MenuItemsEntity.swift in Sources */,
 				86D637EF2B73BB10008550D3 /* LoginEntity.swift in Sources */,
+				865A7CD82B765DBA0002B765 /* OrderItemTableViewCell.swift in Sources */,
 				86D638072B743538008550D3 /* AppConstants.swift in Sources */,
+				865A7CE42B76954B0002B765 /* RegistrationRouter.swift in Sources */,
 				86D638182B750DDD008550D3 /* MenuView+CollectionView.swift in Sources */,
 				86D638122B750965008550D3 /* MenuPresenter.swift in Sources */,
 				86D637F22B73CC80008550D3 /* AuthTextField.swift in Sources */,
 				86D6381A2B750E37008550D3 /* MenuItemCollectionViewCell.swift in Sources */,
 				86D6381D2B751C9C008550D3 /* CustomStepper.swift in Sources */,
+				865A7CD42B765CD00002B765 /* OrderRouter.swift in Sources */,
 				86D637C12B73AB18008550D3 /* AppDelegate.swift in Sources */,
 				86D637F52B73F0AE008550D3 /* KeychainHelper.swift in Sources */,
 				86D6380E2B750823008550D3 /* MenuView.swift in Sources */,
 				86D637DA2B73B488008550D3 /* LoginInteractor.swift in Sources */,
 				86D637D62B73B418008550D3 /* LoginView.swift in Sources */,
 				86D637E42B73B862008550D3 /* Provider.swift in Sources */,
-				86D637FF2B740208008550D3 /* CoffeShopsPresenter.swift in Sources */,
+				86D637FF2B740208008550D3 /* CoffeeShopsPresenter.swift in Sources */,
 				86D637FB2B74011B008550D3 /* CoffeShopsView.swift in Sources */,
 				86D637C32B73AB18008550D3 /* SceneDelegate.swift in Sources */,
+				865A7CCE2B765C940002B765 /* OrderInteractor.swift in Sources */,
+				865A7CDE2B7694EC0002B765 /* RegistrationInteractor.swift in Sources */,
 				86D638032B740413008550D3 /* CoffeeShopsRouter.swift in Sources */,
 				86D638092B74D936008550D3 /* CoffeeShopsView+TableView.swift in Sources */,
 				86D638162B750AF0008550D3 /* MenuRouter.swift in Sources */,
+				865A7CDC2B7694BB0002B765 /* RegistrationView.swift in Sources */,
 				86D637DC2B73B4D0008550D3 /* LoginRouter.swift in Sources */,
+				865A7CE22B7695210002B765 /* RegistrationEntity.swift in Sources */,
 				86D637FD2B74018B008550D3 /* CoffeeShopsInteractor.swift in Sources */,
+				865A7CE02B76950E0002B765 /* RegistrationPresenter.swift in Sources */,
 				86D638052B742D29008550D3 /* CoffeeShopTableViewCell.swift in Sources */,
+				865A7CD22B765CB80002B765 /* OrderEntity.swift in Sources */,
 				86D638012B740387008550D3 /* CoffeeShopsEntity.swift in Sources */,
+				865A7CCC2B765C860002B765 /* OrderView.swift in Sources */,
 				86D6380B2B74EE21008550D3 /* LocationManager.swift in Sources */,
 				86D637D82B73B45F008550D3 /* LoginPresenter.swift in Sources */,
+				865A7CD62B765D9A0002B765 /* OrderView+TableView.swift in Sources */,
+				865A7CD02B765CA50002B765 /* OrderPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

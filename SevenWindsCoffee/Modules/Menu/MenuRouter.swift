@@ -10,6 +10,7 @@ import Foundation
 
 protocol MenuRouterProtocol: AnyRouterProtocol {
     static func start(id: Int) -> AnyRouterProtocol
+    func navigateToOrder(with order: OrderEntity)
 }
 
 class MenuRouter: MenuRouterProtocol {
@@ -40,8 +41,10 @@ class MenuRouter: MenuRouterProtocol {
         return router
     }
     
-    func goToCofeeShopsList() {
-        
+    func navigateToOrder(with order: OrderEntity) {
+        let orderRouter = OrderRouter.start(items: order)
+        guard let vc = orderRouter.entryPoint else { return }
+        entryPoint?.navigationController?.pushViewController(vc, animated: true)
     }
     
     

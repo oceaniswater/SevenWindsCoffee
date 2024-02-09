@@ -48,14 +48,6 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let item = presenter?.items[indexPath.row] {
-            //
-        }
-    }
-    
-    
 }
 
 extension MenuViewController: UICollectionViewDelegateFlowLayout {

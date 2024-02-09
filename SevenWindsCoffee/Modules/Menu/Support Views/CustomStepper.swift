@@ -142,3 +142,9 @@ private extension Counter {
         delegate?.didChanged(count: count)
     }
 }
+
+extension Counter {
+    func setCounterValue(with count: UInt) {
+        self.count = count
+    }
+}

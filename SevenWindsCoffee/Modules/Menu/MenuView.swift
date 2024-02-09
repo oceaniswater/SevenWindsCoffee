@@ -29,7 +29,7 @@ class MenuViewController: UIViewController {
         return collection
     }()
     
-    var onMapButton: UIButton = {
+    var goToOrderButton: UIButton = {
         let button = UIButton()
         button.setTitle("Перейти к оплате", for: .normal)
         button.tintColor = .white
@@ -60,8 +60,8 @@ class MenuViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    func onMapButtonTaped() {
-
+    func goToOrderButtonTaped() {
+        presenter?.tapOnGoToOrderButton()
     }
 }
 
@@ -100,9 +100,9 @@ private extension MenuViewController {
         addSubview()
         setupLayout()
 
-        onMapButton.addAction(
+        goToOrderButton.addAction(
             UIAction { [weak self] _ in
-                self?.onMapButtonTaped()
+                self?.goToOrderButtonTaped()
             },
             for: .touchUpInside)
         
@@ -115,7 +115,7 @@ private extension MenuViewController {
         view.backgroundColor = K.Design.secondBackroundColor
         view.addSubview(menuCollection)
         view.addSubview(separatorView)
-        view.addSubview(onMapButton)
+        view.addSubview(goToOrderButton)
     }
 }
 
@@ -127,7 +127,7 @@ private extension MenuViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalTo(onMapButton.snp.top)
+            make.bottom.equalTo(goToOrderButton.snp.top)
         }
         
         separatorView.snp.makeConstraints { make in
@@ -136,7 +136,7 @@ private extension MenuViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
         }
         
-        onMapButton.snp.makeConstraints { make in
+        goToOrderButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(732)
             make.width.equalTo(338)
             make.height.equalTo(48)

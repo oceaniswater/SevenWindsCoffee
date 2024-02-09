@@ -16,6 +16,8 @@ protocol MenuPresenterProtocol {
     func fetchSuccess(items: MenuItemsEntity)
     func fetchError(message: String)
     
+    func tapOnGoToOrderButton()
+    
     var id: Int {get set}
     var items: MenuItemsEntity { get set }
     func numberOfSection() -> Int
@@ -59,6 +61,10 @@ class MenuPresenter: MenuPresenterProtocol, MenuInteractorOutputProtocol {
     
     func numberOfItemsInSection(in section: Int) -> Int {
         return self.items.count
+    }
+    
+    func tapOnGoToOrderButton() {
+        router?.navigateToOrder(with: [])
     }
 }
 
