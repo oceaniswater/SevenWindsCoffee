@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		865A7CC42B76459F0002B765 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 865A7CC32B76459F0002B765 /* SDWebImage */; };
 		865A7CC62B76459F0002B765 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 865A7CC52B76459F0002B765 /* SDWebImageMapKit */; };
-		865A7CC92B764A680002B765 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CC82B764A680002B765 /* UIView+Extensions.swift */; };
 		86D637C12B73AB18008550D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637C02B73AB18008550D3 /* AppDelegate.swift */; };
 		86D637C32B73AB18008550D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637C22B73AB18008550D3 /* SceneDelegate.swift */; };
 		86D637CA2B73AB19008550D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86D637C92B73AB19008550D3 /* Assets.xcassets */; };
@@ -48,7 +47,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		865A7CC82B764A680002B765 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		86D637BD2B73AB18008550D3 /* SevenWindsCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SevenWindsCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D637C02B73AB18008550D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86D637C22B73AB18008550D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 		865A7CC72B764A4B0002B765 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				865A7CC82B764A680002B765 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -319,7 +316,6 @@
 				86D6380E2B750823008550D3 /* MenuView.swift in Sources */,
 				86D637DA2B73B488008550D3 /* LoginInteractor.swift in Sources */,
 				86D637D62B73B418008550D3 /* LoginView.swift in Sources */,
-				865A7CC92B764A680002B765 /* UIView+Extensions.swift in Sources */,
 				86D637E42B73B862008550D3 /* Provider.swift in Sources */,
 				86D637FF2B740208008550D3 /* CoffeShopsPresenter.swift in Sources */,
 				86D637FB2B74011B008550D3 /* CoffeShopsView.swift in Sources */,
