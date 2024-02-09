@@ -7,16 +7,16 @@ protocol CounterDelegate: AnyObject {
 }
 
 class Counter: UIView {
-
+    
     // MARK: - Data types
-
+    
     enum Style {
         case forCollection
         case forTable
     }
-
+    
     // MARK: - Views
-
+    
     private lazy var minusButton: UIButton = {
         let view = UIButton()
         switch style {
@@ -30,7 +30,7 @@ class Counter: UIView {
         view.addTarget(self, action: #selector(minusButtonAction), for: .touchUpInside)
         return view
     }()
-
+    
     private lazy var plusButton: UIButton = {
         let view = UIButton()
         switch style {
@@ -44,7 +44,7 @@ class Counter: UIView {
         view.addTarget(self, action: #selector(plusButtonAction), for: .touchUpInside)
         return view
     }()
-
+    
     private lazy var countLabel: UILabel = {
         let view = UILabel()
         switch style {
@@ -58,69 +58,85 @@ class Counter: UIView {
         view.text = "0"
         return view
     }()
-
-    private lazy var stackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [minusButton, countLabel, plusButton])
-        view.axis = .horizontal
-        view.distribution = .fillEqually
-        view.alignment = .fill
-        view.spacing = 0.0
-        return view
-    }()
-
+    
+    private var stackView: UIStackView!
+    
     // MARK: - Properties
-
+    
     private var style: Style
-
+    
     private var count: UInt = 0 {
         didSet {
             countLabel.text = "\(count)"
         }
     }
-
+    
     weak var delegate: CounterDelegate?
-
+    
     // MARK: - Lifecycle
-
+    
     private override init(frame: CGRect) {
         style = .forTable
         super.init(frame: frame)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("Counter.init(coder:) has not been implemented")
     }
-
+    
     convenience init(with style: Style) {
         self.init(frame: .zero)
         self.style = style
         setupView()
-        setupConstraints()
     }
+}
 
-    // MARK: Setup UI
+    
+// MARK: - Setup Cell
+private extension Counter {
+    func setupView() {
+        backgroundColor = .clear
+        
+        addSubview()
+        setupLayout()
+        
+    }
+}
 
-    private func setupView() {
+// MARK: - Setting
+private extension Counter {
+    func addSubview() {
+        
+        stackView = UIStackView(arrangedSubviews: [minusButton, countLabel, plusButton])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.spacing = 0.0
+        
         addSubview(stackView)
     }
+}
 
-    private func setupConstraints() {
+// MARK: - Setup Layout
+private extension Counter {
+    private func setupLayout() {
         let size = CGSize(width: 72.0, height: 24.0)
-
-        stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.size.equalTo(size)
+        
+        stackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.size.equalTo(size)
         }
     }
+}
 
     // MARK: - Logic
-
+private extension Counter {
     @objc func minusButtonAction() {
         guard count > 0 else { return }
         count -= 1
         delegate?.didChanged(count: count)
     }
-
+    
     @objc func plusButtonAction() {
         count += 1
         delegate?.didChanged(count: count)
