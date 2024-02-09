@@ -19,16 +19,19 @@ class MenuViewController: UIViewController {
     
     var presenter: MenuPresenterProtocol?
     
-    let tableView: UITableView = {
-        let table = UITableView()
-        table.backgroundColor = K.Design.primaryBackroundColor
-        table.separatorStyle = .none
-        return table
+    var menuCollection: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 0.0
+        layout.minimumLineSpacing = 0.0
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.backgroundColor = .clear
+        return collection
     }()
     
     var onMapButton: UIButton = {
         let button = UIButton()
-        button.setTitle("На карте", for: .normal)
+        button.setTitle("Перейти к оплате", for: .normal)
         button.tintColor = .white
         button.backgroundColor = .black
         button.layer.cornerRadius = 25
@@ -48,18 +51,7 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
-        setupTableView()
-        
-        LocationManager.shared.startUpdatingLocation { [weak self] success in
-            guard let self = self else { return }
-            
-            if success {
-                // User granted location permission, reload table view
-                self.reloadTableView()
-            } else {
-                // Handle case where location permission is not granted
-            }
-        }
+        setupCollectionView()
         
         presenter?.fetchMenuItems()
     }
@@ -75,7 +67,7 @@ class MenuViewController: UIViewController {
 
 extension MenuViewController: MenuViewProtocol {
     func fetchMenuSuccess() {
-        reloadTableView()
+        reloadColectionView()
     }
     
     func showFetchError(message: String) {
@@ -121,7 +113,7 @@ private extension MenuViewController {
 private extension MenuViewController {
     func addSubview() {
         view.backgroundColor = K.Design.secondBackroundColor
-        view.addSubview(tableView)
+        view.addSubview(menuCollection)
         view.addSubview(separatorView)
         view.addSubview(onMapButton)
     }
@@ -131,11 +123,11 @@ private extension MenuViewController {
 private extension MenuViewController {
     func setupLayout() {
         
-        tableView.snp.makeConstraints { make in
+        menuCollection.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.leading.equalToSuperview().offset(10)
             make.trailing.equalToSuperview().offset(-10)
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(onMapButton.snp.top)
         }
         
         separatorView.snp.makeConstraints { make in

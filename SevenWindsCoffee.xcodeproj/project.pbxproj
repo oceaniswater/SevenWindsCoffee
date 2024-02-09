@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		865A7CC42B76459F0002B765 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 865A7CC32B76459F0002B765 /* SDWebImage */; };
+		865A7CC62B76459F0002B765 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 865A7CC52B76459F0002B765 /* SDWebImageMapKit */; };
+		865A7CC92B764A680002B765 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CC82B764A680002B765 /* UIView+Extensions.swift */; };
 		86D637C12B73AB18008550D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637C02B73AB18008550D3 /* AppDelegate.swift */; };
 		86D637C32B73AB18008550D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637C22B73AB18008550D3 /* SceneDelegate.swift */; };
 		86D637CA2B73AB19008550D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86D637C92B73AB19008550D3 /* Assets.xcassets */; };
@@ -39,11 +42,13 @@
 		86D638122B750965008550D3 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638112B750965008550D3 /* MenuPresenter.swift */; };
 		86D638142B750A02008550D3 /* MenuItemsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638132B750A02008550D3 /* MenuItemsEntity.swift */; };
 		86D638162B750AF0008550D3 /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638152B750AF0008550D3 /* MenuRouter.swift */; };
-		86D638182B750DDD008550D3 /* MenuView+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638172B750DDD008550D3 /* MenuView+TableView.swift */; };
-		86D6381A2B750E37008550D3 /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638192B750E37008550D3 /* MenuItemTableViewCell.swift */; };
+		86D638182B750DDD008550D3 /* MenuView+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638172B750DDD008550D3 /* MenuView+CollectionView.swift */; };
+		86D6381A2B750E37008550D3 /* MenuItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D638192B750E37008550D3 /* MenuItemCollectionViewCell.swift */; };
+		86D6381D2B751C9C008550D3 /* CustomStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D6381C2B751C9C008550D3 /* CustomStepper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		865A7CC82B764A680002B765 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		86D637BD2B73AB18008550D3 /* SevenWindsCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SevenWindsCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D637C02B73AB18008550D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86D637C22B73AB18008550D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,8 +77,9 @@
 		86D638112B750965008550D3 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
 		86D638132B750A02008550D3 /* MenuItemsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemsEntity.swift; sourceTree = "<group>"; };
 		86D638152B750AF0008550D3 /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
-		86D638172B750DDD008550D3 /* MenuView+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuView+TableView.swift"; sourceTree = "<group>"; };
-		86D638192B750E37008550D3 /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
+		86D638172B750DDD008550D3 /* MenuView+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuView+CollectionView.swift"; sourceTree = "<group>"; };
+		86D638192B750E37008550D3 /* MenuItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		86D6381C2B751C9C008550D3 /* CustomStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStepper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				86D637F82B73F0D1008550D3 /* KeychainSwift in Frameworks */,
+				865A7CC62B76459F0002B765 /* SDWebImageMapKit in Frameworks */,
+				865A7CC42B76459F0002B765 /* SDWebImage in Frameworks */,
 				86D637ED2B73B8A8008550D3 /* RxMoya in Frameworks */,
 				86D637E72B73B8A8008550D3 /* CombineMoya in Frameworks */,
 				86D637EB2B73B8A8008550D3 /* ReactiveMoya in Frameworks */,
@@ -93,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		865A7CC72B764A4B0002B765 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				865A7CC82B764A680002B765 /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		86D637B42B73AB18008550D3 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +128,7 @@
 		86D637BF2B73AB18008550D3 /* SevenWindsCoffee */ = {
 			isa = PBXGroup;
 			children = (
+				865A7CC72B764A4B0002B765 /* Extensions */,
 				86D637F32B73F072008550D3 /* Helpers */,
 				86D637E22B73B83D008550D3 /* Network */,
 				86D637D42B73B3D7008550D3 /* Login */,
@@ -182,15 +199,24 @@
 		86D6380C2B750788008550D3 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				86D6381B2B751C74008550D3 /* Support Views */,
 				86D6380D2B750823008550D3 /* MenuView.swift */,
 				86D6380F2B7508A0008550D3 /* MenuInteractor.swift */,
 				86D638112B750965008550D3 /* MenuPresenter.swift */,
 				86D638132B750A02008550D3 /* MenuItemsEntity.swift */,
 				86D638152B750AF0008550D3 /* MenuRouter.swift */,
-				86D638192B750E37008550D3 /* MenuItemTableViewCell.swift */,
-				86D638172B750DDD008550D3 /* MenuView+TableView.swift */,
+				86D638192B750E37008550D3 /* MenuItemCollectionViewCell.swift */,
+				86D638172B750DDD008550D3 /* MenuView+CollectionView.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		86D6381B2B751C74008550D3 /* Support Views */ = {
+			isa = PBXGroup;
+			children = (
+				86D6381C2B751C9C008550D3 /* CustomStepper.swift */,
+			);
+			path = "Support Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +242,8 @@
 				86D637EA2B73B8A8008550D3 /* ReactiveMoya */,
 				86D637EC2B73B8A8008550D3 /* RxMoya */,
 				86D637F72B73F0D1008550D3 /* KeychainSwift */,
+				865A7CC32B76459F0002B765 /* SDWebImage */,
+				865A7CC52B76459F0002B765 /* SDWebImageMapKit */,
 			);
 			productName = SevenWindsCoffee;
 			productReference = 86D637BD2B73AB18008550D3 /* SevenWindsCoffee.app */;
@@ -249,6 +277,7 @@
 				86D637DD2B73B519008550D3 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				86D637E52B73B8A8008550D3 /* XCRemoteSwiftPackageReference "Moya" */,
 				86D637F62B73F0D1008550D3 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				865A7CC22B76459F0002B765 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 86D637BE2B73AB18008550D3 /* Products */;
 			projectDirPath = "";
@@ -280,15 +309,17 @@
 				86D638142B750A02008550D3 /* MenuItemsEntity.swift in Sources */,
 				86D637EF2B73BB10008550D3 /* LoginEntity.swift in Sources */,
 				86D638072B743538008550D3 /* AppConstants.swift in Sources */,
-				86D638182B750DDD008550D3 /* MenuView+TableView.swift in Sources */,
+				86D638182B750DDD008550D3 /* MenuView+CollectionView.swift in Sources */,
 				86D638122B750965008550D3 /* MenuPresenter.swift in Sources */,
 				86D637F22B73CC80008550D3 /* AuthTextField.swift in Sources */,
-				86D6381A2B750E37008550D3 /* MenuItemTableViewCell.swift in Sources */,
+				86D6381A2B750E37008550D3 /* MenuItemCollectionViewCell.swift in Sources */,
+				86D6381D2B751C9C008550D3 /* CustomStepper.swift in Sources */,
 				86D637C12B73AB18008550D3 /* AppDelegate.swift in Sources */,
 				86D637F52B73F0AE008550D3 /* KeychainHelper.swift in Sources */,
 				86D6380E2B750823008550D3 /* MenuView.swift in Sources */,
 				86D637DA2B73B488008550D3 /* LoginInteractor.swift in Sources */,
 				86D637D62B73B418008550D3 /* LoginView.swift in Sources */,
+				865A7CC92B764A680002B765 /* UIView+Extensions.swift in Sources */,
 				86D637E42B73B862008550D3 /* Provider.swift in Sources */,
 				86D637FF2B740208008550D3 /* CoffeShopsPresenter.swift in Sources */,
 				86D637FB2B74011B008550D3 /* CoffeShopsView.swift in Sources */,
@@ -516,6 +547,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		865A7CC22B76459F0002B765 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.18.10;
+			};
+		};
 		86D637DD2B73B519008550D3 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -543,6 +582,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		865A7CC32B76459F0002B765 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 865A7CC22B76459F0002B765 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		865A7CC52B76459F0002B765 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 865A7CC22B76459F0002B765 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
 		86D637DE2B73B519008550D3 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 86D637DD2B73B519008550D3 /* XCRemoteSwiftPackageReference "SnapKit" */;

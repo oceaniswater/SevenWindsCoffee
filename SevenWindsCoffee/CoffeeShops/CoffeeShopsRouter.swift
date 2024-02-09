@@ -35,7 +35,7 @@ class CoffeeShopsRouter: CoffeeShopsRouterProtocol {
     }
     
     func navigateToMenu(id: Int) {
-        let menuRouter = MenuRouter.start()
+        let menuRouter = MenuRouter.start(id: id)
         guard let vc = menuRouter.entryPoint else { return }
         entryPoint?.navigationController?.pushViewController(vc, animated: true)
     }

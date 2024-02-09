@@ -18,8 +18,8 @@ protocol MenuPresenterProtocol {
     
     var id: Int {get set}
     var items: MenuItemsEntity { get set }
-    func numberOfSections() -> Int
-    func numberOfRows(in section: Int) -> Int
+    func numberOfSection() -> Int
+    func numberOfItemsInSection(in section: Int) -> Int
 }
 
 class MenuPresenter: MenuPresenterProtocol, MenuInteractorOutputProtocol {
@@ -53,11 +53,11 @@ class MenuPresenter: MenuPresenterProtocol, MenuInteractorOutputProtocol {
         view?.showFetchError(message: message)
     }
     
-    func numberOfSections() -> Int {
+    func numberOfSection() -> Int {
         2
     }
     
-    func numberOfRows(in section: Int) -> Int {
+    func numberOfItemsInSection(in section: Int) -> Int {
         return self.items.count
     }
 }
