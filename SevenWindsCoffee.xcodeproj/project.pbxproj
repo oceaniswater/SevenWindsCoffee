@@ -21,6 +21,12 @@
 		865A7CE02B76950E0002B765 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CDF2B76950E0002B765 /* RegistrationPresenter.swift */; };
 		865A7CE22B7695210002B765 /* RegistrationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CE12B7695210002B765 /* RegistrationEntity.swift */; };
 		865A7CE42B76954B0002B765 /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CE32B76954B0002B765 /* RegistrationRouter.swift */; };
+		868A28502B778B9F00FCFD2D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A284F2B778B9F00FCFD2D /* Alert.swift */; };
+		868A28532B77909300FCFD2D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A28522B77909300FCFD2D /* MapView.swift */; };
+		868A28552B7790A400FCFD2D /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A28542B7790A400FCFD2D /* MapInteractor.swift */; };
+		868A28572B7790B600FCFD2D /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A28562B7790B600FCFD2D /* MapPresenter.swift */; };
+		868A28592B7790CC00FCFD2D /* MapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A28582B7790CC00FCFD2D /* MapEntity.swift */; };
+		868A285B2B7790DC00FCFD2D /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A285A2B7790DC00FCFD2D /* MapRouter.swift */; };
 		86D637C12B73AB18008550D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637C02B73AB18008550D3 /* AppDelegate.swift */; };
 		86D637C32B73AB18008550D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637C22B73AB18008550D3 /* SceneDelegate.swift */; };
 		86D637CA2B73AB19008550D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86D637C92B73AB19008550D3 /* Assets.xcassets */; };
@@ -71,6 +77,12 @@
 		865A7CDF2B76950E0002B765 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		865A7CE12B7695210002B765 /* RegistrationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEntity.swift; sourceTree = "<group>"; };
 		865A7CE32B76954B0002B765 /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
+		868A284F2B778B9F00FCFD2D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		868A28522B77909300FCFD2D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		868A28542B7790A400FCFD2D /* MapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInteractor.swift; sourceTree = "<group>"; };
+		868A28562B7790B600FCFD2D /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		868A28582B7790CC00FCFD2D /* MapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEntity.swift; sourceTree = "<group>"; };
+		868A285A2B7790DC00FCFD2D /* MapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
 		86D637BD2B73AB18008550D3 /* SevenWindsCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SevenWindsCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D637C02B73AB18008550D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86D637C22B73AB18008550D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +138,7 @@
 		865A7CC72B764A4B0002B765 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				868A284F2B778B9F00FCFD2D /* Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -150,6 +163,7 @@
 				865A7CDA2B7694A30002B765 /* Registration */,
 				86D637D42B73B3D7008550D3 /* Login */,
 				86D637F92B7400E4008550D3 /* CoffeeShops */,
+				868A28512B77906300FCFD2D /* Map */,
 				86D6380C2B750788008550D3 /* Menu */,
 				865A7CCA2B765C710002B765 /* Order */,
 			);
@@ -166,6 +180,18 @@
 				865A7CE32B76954B0002B765 /* RegistrationRouter.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		868A28512B77906300FCFD2D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				868A28522B77909300FCFD2D /* MapView.swift */,
+				868A28542B7790A400FCFD2D /* MapInteractor.swift */,
+				868A28562B7790B600FCFD2D /* MapPresenter.swift */,
+				868A28582B7790CC00FCFD2D /* MapEntity.swift */,
+				868A285A2B7790DC00FCFD2D /* MapRouter.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		86D637B42B73AB18008550D3 = {
@@ -367,6 +393,7 @@
 				86D637EF2B73BB10008550D3 /* LoginEntity.swift in Sources */,
 				865A7CD82B765DBA0002B765 /* OrderItemTableViewCell.swift in Sources */,
 				86D638072B743538008550D3 /* AppConstants.swift in Sources */,
+				868A28572B7790B600FCFD2D /* MapPresenter.swift in Sources */,
 				865A7CE42B76954B0002B765 /* RegistrationRouter.swift in Sources */,
 				86D638182B750DDD008550D3 /* MenuView+CollectionView.swift in Sources */,
 				86D638122B750965008550D3 /* MenuPresenter.swift in Sources */,
@@ -378,13 +405,16 @@
 				86D637F52B73F0AE008550D3 /* KeychainHelper.swift in Sources */,
 				86D6380E2B750823008550D3 /* MenuView.swift in Sources */,
 				86D637DA2B73B488008550D3 /* LoginInteractor.swift in Sources */,
+				868A285B2B7790DC00FCFD2D /* MapRouter.swift in Sources */,
 				86D637D62B73B418008550D3 /* LoginView.swift in Sources */,
 				86D637E42B73B862008550D3 /* Provider.swift in Sources */,
+				868A28532B77909300FCFD2D /* MapView.swift in Sources */,
 				86D637FF2B740208008550D3 /* CoffeeShopsPresenter.swift in Sources */,
 				86D637FB2B74011B008550D3 /* CoffeShopsView.swift in Sources */,
 				86D637C32B73AB18008550D3 /* SceneDelegate.swift in Sources */,
 				865A7CCE2B765C940002B765 /* OrderInteractor.swift in Sources */,
 				865A7CDE2B7694EC0002B765 /* RegistrationInteractor.swift in Sources */,
+				868A28592B7790CC00FCFD2D /* MapEntity.swift in Sources */,
 				86D638032B740413008550D3 /* CoffeeShopsRouter.swift in Sources */,
 				86D638092B74D936008550D3 /* CoffeeShopsView+TableView.swift in Sources */,
 				86D638162B750AF0008550D3 /* MenuRouter.swift in Sources */,
@@ -394,12 +424,14 @@
 				86D637FD2B74018B008550D3 /* CoffeeShopsInteractor.swift in Sources */,
 				865A7CE02B76950E0002B765 /* RegistrationPresenter.swift in Sources */,
 				86D638052B742D29008550D3 /* CoffeeShopTableViewCell.swift in Sources */,
+				868A28552B7790A400FCFD2D /* MapInteractor.swift in Sources */,
 				865A7CD22B765CB80002B765 /* OrderEntity.swift in Sources */,
 				86D638012B740387008550D3 /* CoffeeShopsEntity.swift in Sources */,
 				865A7CCC2B765C860002B765 /* OrderView.swift in Sources */,
 				86D6380B2B74EE21008550D3 /* LocationManager.swift in Sources */,
 				86D637D82B73B45F008550D3 /* LoginPresenter.swift in Sources */,
 				865A7CD62B765D9A0002B765 /* OrderView+TableView.swift in Sources */,
+				868A28502B778B9F00FCFD2D /* Alert.swift in Sources */,
 				865A7CD02B765CA50002B765 /* OrderPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

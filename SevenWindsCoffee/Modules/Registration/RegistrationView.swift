@@ -145,24 +145,16 @@ class RegistrationViewController: UIViewController {
               let password2 = passwordRepeatTextField.text else { return }
         guard !email.isEmpty, !password.isEmpty, !password2.isEmpty else {
             DispatchQueue.main.async {
-                self.showAlert(title: "Ошибка", message: "Все поля должны быть заполненны", viewController: self)
+                self.showAlert(title: "Ошибка", message: "Все поля должны быть заполненны")
             }
             return }
         guard password == password2 else {
             DispatchQueue.main.async {
-                self.showAlert(title: "Ошибка", message: "Пароли должны совпадать", viewController: self)
+                self.showAlert(title: "Ошибка", message: "Пароли должны совпадать")
             }
-            
             return }
         presenter?.loginButtonTapped(login: email, password: password)
         view.endEditing(true)
-    }
-    
-    func showAlert(title: String, message: String, viewController: UIViewController) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        viewController.present(alert, animated: true, completion: nil)
     }
 }
 

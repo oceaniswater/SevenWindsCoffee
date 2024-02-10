@@ -130,6 +130,11 @@ class LoginViewController: UIViewController {
     func loggingButtonTaped() {
         guard let email = emailTextField.text,
               let password = passwordTextField.text else { return }
+        guard !email.isEmpty, !password.isEmpty else {
+            DispatchQueue.main.async {
+                self.showAlert(title: "Ошибка", message: "Все поля должны быть заполненны")
+            }
+            return }
         presenter?.loginButtonTapped(login: email, password: password)
         view.endEditing(true)
     }
