@@ -90,7 +90,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
-        
         startObservingKeyobard()
     }
     
@@ -99,7 +98,7 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func startObservingKeyobard() {
+    private func startObservingKeyobard() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(keyboardWillShow),
@@ -131,9 +130,7 @@ class LoginViewController: UIViewController {
         guard let email = emailTextField.text,
               let password = passwordTextField.text else { return }
         guard !email.isEmpty, !password.isEmpty else {
-            DispatchQueue.main.async {
-                self.showAlert(title: "Ошибка", message: "Все поля должны быть заполненны")
-            }
+            AlertPresenter.present(from: self, with: "Ошибка", message: "Оба поля должны быть заполнены.", action: UIAlertAction(title: "Ok", style: .default))
             return }
         presenter?.loginButtonTapped(login: email, password: password)
         view.endEditing(true)

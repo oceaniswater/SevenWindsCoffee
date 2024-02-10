@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let loginRouter = LoginRouter.start()
         let registrationRouter = RegistrationRouter.start()
         
-        let initialVC = registrationRouter.entryPoint
+        let initialVC = loginRouter.entryPoint
         
         let window = UIWindow(windowScene: windowScene)
         guard let initialVC = initialVC else { return }

@@ -17,6 +17,7 @@ protocol CoffeeShopsPresenterProtocol {
     func fetchError(message: String)
     
     func tapOnItem(id: Int)
+    func tapOnMapButton()
     
     var shops: CoffeeShopsEntity { get set }
     func numberOfSections() -> Int
@@ -48,6 +49,10 @@ class CoffeShopsPresenter: CoffeeShopsPresenterProtocol, CoffeeShopsInteractorOu
     
     func tapOnItem(id: Int) {
         router?.navigateToMenu(id: id)
+    }
+    
+    func tapOnMapButton() {
+        router?.navigateToMap()
     }
     
     func fetchError(message: String) {
