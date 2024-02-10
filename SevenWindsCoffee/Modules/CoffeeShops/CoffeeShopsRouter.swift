@@ -10,6 +10,7 @@ import Foundation
 
 protocol CoffeeShopsRouterProtocol: AnyRouterProtocol {
     func navigateToMenu(id: Int)
+    func navigateToMap()
 }
 
 class CoffeeShopsRouter: CoffeeShopsRouterProtocol {
@@ -37,6 +38,12 @@ class CoffeeShopsRouter: CoffeeShopsRouterProtocol {
     func navigateToMenu(id: Int) {
         let menuRouter = MenuRouter.start(id: id)
         guard let vc = menuRouter.entryPoint else { return }
+        entryPoint?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func navigateToMap() {
+        let mapRouter = MapRouter.start()
+        guard let vc = mapRouter.entryPoint else { return }
         entryPoint?.navigationController?.pushViewController(vc, animated: true)
     }
     

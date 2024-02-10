@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>MAPKIT_API_KEY</key>
+	<string>128a4e4a-80f5-4b9f-9962-34e3a9e70e19</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Приложению необходима ваше местоположение для поиска ближайших кофеен.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

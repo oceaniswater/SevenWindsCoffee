@@ -69,7 +69,7 @@ class CoffeeShopsViewController: UIViewController {
     }
     
     func onMapButtonTaped() {
-
+        presenter?.tapOnMapButton()
     }
 }
 

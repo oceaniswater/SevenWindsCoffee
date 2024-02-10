@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30EE984FD76E9ABEA626CCD4 /* Pods_SevenWindsCoffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3198D01E2BB426CFD84B519 /* Pods_SevenWindsCoffee.framework */; };
+		8642B9552B77A4C000BC74B3 /* ApiKeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8642B9542B77A4C000BC74B3 /* ApiKeyStorage.swift */; };
+		8642B9572B77A51400BC74B3 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8642B9562B77A51400BC74B3 /* AlertPresenter.swift */; };
+		8642B9592B77C48600BC74B3 /* Placemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8642B9582B77C48600BC74B3 /* Placemark.swift */; };
 		865A7CC42B76459F0002B765 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 865A7CC32B76459F0002B765 /* SDWebImage */; };
 		865A7CC62B76459F0002B765 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 865A7CC52B76459F0002B765 /* SDWebImageMapKit */; };
 		865A7CCC2B765C860002B765 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CCB2B765C860002B765 /* OrderView.swift */; };
@@ -21,7 +25,6 @@
 		865A7CE02B76950E0002B765 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CDF2B76950E0002B765 /* RegistrationPresenter.swift */; };
 		865A7CE22B7695210002B765 /* RegistrationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CE12B7695210002B765 /* RegistrationEntity.swift */; };
 		865A7CE42B76954B0002B765 /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CE32B76954B0002B765 /* RegistrationRouter.swift */; };
-		868A28502B778B9F00FCFD2D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A284F2B778B9F00FCFD2D /* Alert.swift */; };
 		868A28532B77909300FCFD2D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A28522B77909300FCFD2D /* MapView.swift */; };
 		868A28552B7790A400FCFD2D /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A28542B7790A400FCFD2D /* MapInteractor.swift */; };
 		868A28572B7790B600FCFD2D /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A28562B7790B600FCFD2D /* MapPresenter.swift */; };
@@ -65,6 +68,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5CE6760FA498039EADDCD449 /* Pods-SevenWindsCoffee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SevenWindsCoffee.debug.xcconfig"; path = "Target Support Files/Pods-SevenWindsCoffee/Pods-SevenWindsCoffee.debug.xcconfig"; sourceTree = "<group>"; };
+		8642B9542B77A4C000BC74B3 /* ApiKeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyStorage.swift; sourceTree = "<group>"; };
+		8642B9562B77A51400BC74B3 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
+		8642B9582B77C48600BC74B3 /* Placemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placemark.swift; sourceTree = "<group>"; };
 		865A7CCB2B765C860002B765 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		865A7CCD2B765C940002B765 /* OrderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInteractor.swift; sourceTree = "<group>"; };
 		865A7CCF2B765CA50002B765 /* OrderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPresenter.swift; sourceTree = "<group>"; };
@@ -77,7 +84,6 @@
 		865A7CDF2B76950E0002B765 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		865A7CE12B7695210002B765 /* RegistrationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEntity.swift; sourceTree = "<group>"; };
 		865A7CE32B76954B0002B765 /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
-		868A284F2B778B9F00FCFD2D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		868A28522B77909300FCFD2D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		868A28542B7790A400FCFD2D /* MapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInteractor.swift; sourceTree = "<group>"; };
 		868A28562B7790B600FCFD2D /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
@@ -114,6 +120,8 @@
 		86D638172B750DDD008550D3 /* MenuView+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuView+CollectionView.swift"; sourceTree = "<group>"; };
 		86D638192B750E37008550D3 /* MenuItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		86D6381C2B751C9C008550D3 /* CustomStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStepper.swift; sourceTree = "<group>"; };
+		A216F90FA41F6F911B81C4CA /* Pods-SevenWindsCoffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SevenWindsCoffee.release.xcconfig"; path = "Target Support Files/Pods-SevenWindsCoffee/Pods-SevenWindsCoffee.release.xcconfig"; sourceTree = "<group>"; };
+		C3198D01E2BB426CFD84B519 /* Pods_SevenWindsCoffee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SevenWindsCoffee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,16 +137,43 @@
 				86D637EB2B73B8A8008550D3 /* ReactiveMoya in Frameworks */,
 				86D637DF2B73B519008550D3 /* SnapKit in Frameworks */,
 				86D637E92B73B8A8008550D3 /* Moya in Frameworks */,
+				30EE984FD76E9ABEA626CCD4 /* Pods_SevenWindsCoffee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		480B86D6138C618C09AB61E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3198D01E2BB426CFD84B519 /* Pods_SevenWindsCoffee.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4A280A22C368397BBA31D1D8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5CE6760FA498039EADDCD449 /* Pods-SevenWindsCoffee.debug.xcconfig */,
+				A216F90FA41F6F911B81C4CA /* Pods-SevenWindsCoffee.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8642B9532B77A3FF00BC74B3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8642B9542B77A4C000BC74B3 /* ApiKeyStorage.swift */,
+				8642B9562B77A51400BC74B3 /* AlertPresenter.swift */,
+				8642B9582B77C48600BC74B3 /* Placemark.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		865A7CC72B764A4B0002B765 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				868A284F2B778B9F00FCFD2D /* Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -199,6 +234,8 @@
 			children = (
 				86D637BF2B73AB18008550D3 /* SevenWindsCoffee */,
 				86D637BE2B73AB18008550D3 /* Products */,
+				4A280A22C368397BBA31D1D8 /* Pods */,
+				480B86D6138C618C09AB61E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -213,6 +250,7 @@
 		86D637BF2B73AB18008550D3 /* SevenWindsCoffee */ = {
 			isa = PBXGroup;
 			children = (
+				8642B9532B77A3FF00BC74B3 /* Utils */,
 				865A7CC72B764A4B0002B765 /* Extensions */,
 				86D637F32B73F072008550D3 /* Helpers */,
 				86D637E22B73B83D008550D3 /* Network */,
@@ -309,9 +347,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 86D637D12B73AB19008550D3 /* Build configuration list for PBXNativeTarget "SevenWindsCoffee" */;
 			buildPhases = (
+				9DF7EFDF4658B07B28EF3D3C /* [CP] Check Pods Manifest.lock */,
 				86D637B92B73AB18008550D3 /* Sources */,
 				86D637BA2B73AB18008550D3 /* Frameworks */,
 				86D637BB2B73AB18008550D3 /* Resources */,
+				42A37086F5E3AC3BCEB0DC3D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -383,6 +423,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		42A37086F5E3AC3BCEB0DC3D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SevenWindsCoffee/Pods-SevenWindsCoffee-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SevenWindsCoffee/Pods-SevenWindsCoffee-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SevenWindsCoffee/Pods-SevenWindsCoffee-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9DF7EFDF4658B07B28EF3D3C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SevenWindsCoffee-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		86D637B92B73AB18008550D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -398,6 +480,7 @@
 				86D638182B750DDD008550D3 /* MenuView+CollectionView.swift in Sources */,
 				86D638122B750965008550D3 /* MenuPresenter.swift in Sources */,
 				86D637F22B73CC80008550D3 /* AuthTextField.swift in Sources */,
+				8642B9592B77C48600BC74B3 /* Placemark.swift in Sources */,
 				86D6381A2B750E37008550D3 /* MenuItemCollectionViewCell.swift in Sources */,
 				86D6381D2B751C9C008550D3 /* CustomStepper.swift in Sources */,
 				865A7CD42B765CD00002B765 /* OrderRouter.swift in Sources */,
@@ -412,6 +495,7 @@
 				86D637FF2B740208008550D3 /* CoffeeShopsPresenter.swift in Sources */,
 				86D637FB2B74011B008550D3 /* CoffeShopsView.swift in Sources */,
 				86D637C32B73AB18008550D3 /* SceneDelegate.swift in Sources */,
+				8642B9552B77A4C000BC74B3 /* ApiKeyStorage.swift in Sources */,
 				865A7CCE2B765C940002B765 /* OrderInteractor.swift in Sources */,
 				865A7CDE2B7694EC0002B765 /* RegistrationInteractor.swift in Sources */,
 				868A28592B7790CC00FCFD2D /* MapEntity.swift in Sources */,
@@ -420,6 +504,7 @@
 				86D638162B750AF0008550D3 /* MenuRouter.swift in Sources */,
 				865A7CDC2B7694BB0002B765 /* RegistrationView.swift in Sources */,
 				86D637DC2B73B4D0008550D3 /* LoginRouter.swift in Sources */,
+				8642B9572B77A51400BC74B3 /* AlertPresenter.swift in Sources */,
 				865A7CE22B7695210002B765 /* RegistrationEntity.swift in Sources */,
 				86D637FD2B74018B008550D3 /* CoffeeShopsInteractor.swift in Sources */,
 				865A7CE02B76950E0002B765 /* RegistrationPresenter.swift in Sources */,
@@ -431,7 +516,6 @@
 				86D6380B2B74EE21008550D3 /* LocationManager.swift in Sources */,
 				86D637D82B73B45F008550D3 /* LoginPresenter.swift in Sources */,
 				865A7CD62B765D9A0002B765 /* OrderView+TableView.swift in Sources */,
-				868A28502B778B9F00FCFD2D /* Alert.swift in Sources */,
 				865A7CD02B765CA50002B765 /* OrderPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,12 +655,14 @@
 		};
 		86D637D22B73AB19008550D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CE6760FA498039EADDCD449 /* Pods-SevenWindsCoffee.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 922R4697G4;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SevenWindsCoffee/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -598,12 +684,14 @@
 		};
 		86D637D32B73AB19008550D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A216F90FA41F6F911B81C4CA /* Pods-SevenWindsCoffee.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 922R4697G4;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SevenWindsCoffee/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
