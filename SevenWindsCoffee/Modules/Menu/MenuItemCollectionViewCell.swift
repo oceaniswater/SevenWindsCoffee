@@ -108,7 +108,7 @@ class MenuItemCollectionViewCell: UICollectionViewCell {
     // MARK: - Public methods
     func configure(with item: MenuItemsEntityElement) {
         nameLabel.text = item.name
-        priceLabel.text = String(item.price)
+        priceLabel.text = "\(String(item.price)) руб"
         
         startAnimating()
         
@@ -147,7 +147,7 @@ private extension MenuItemCollectionViewCell {
 
         hStack = UIStackView(arrangedSubviews: [priceLabel, stepper])
         hStack.axis = .horizontal
-        hStack.spacing = 55
+        hStack.spacing = 25
         hStack.alignment = .leading
         
         vStack = UIStackView(arrangedSubviews: [nameLabel, hStack])

@@ -87,7 +87,7 @@ class OrderTableViewCell: UITableViewCell {
     // MARK: - Public methods
     func configure(with item: OrderEntityElement) {
         nameLabel.text = item.item.name
-        priceLabel.text = String(item.item.price)
+        priceLabel.text = "\(String(item.item.price)) рублей"
     }
 }
 
@@ -115,7 +115,7 @@ private extension OrderTableViewCell {
         
         hStack = UIStackView(arrangedSubviews: [vStack, stepper])
         hStack.axis = .horizontal
-        hStack.spacing = 165
+        hStack.spacing = 140
         hStack.alignment = .center
         
         view.addSubview(hStack)
