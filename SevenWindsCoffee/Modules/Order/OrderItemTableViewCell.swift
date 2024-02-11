@@ -116,7 +116,8 @@ private extension OrderTableViewCell {
         
         hStack = UIStackView(arrangedSubviews: [vStack, stepper])
         hStack.axis = .horizontal
-        hStack.spacing = 140
+//        hStack.spacing = 140
+        hStack.distribution = .fillProportionally
         hStack.alignment = .center
         
         view.addSubview(hStack)
@@ -132,6 +133,10 @@ private extension OrderTableViewCell {
             make.width.equalTo(349)
             make.height.equalTo(71)
             make.bottom.equalToSuperview().inset(5)
+        }
+        
+        stepper.snp.makeConstraints { make in
+            make.width.equalTo(70)
         }
 
         hStack.snp.makeConstraints { make in
@@ -175,7 +180,7 @@ extension OrderTableViewCell: OrderTableViewCellInput {
 
 #Preview(traits: .defaultLayout, body: {
     let view = OrderTableViewCell()
-    view.configure(with: OrderEntityElement(item: MenuItemsEntityElement(id: 1, name: "Americano", imageURL: "", price: 200), count: 1))
+    view.configure(with: OrderEntityElement(item: MenuItemsEntityElement(id: 1, name: "AmericanoAmericano Americano", imageURL: "", price: 200), count: 1))
     return view
 })
 

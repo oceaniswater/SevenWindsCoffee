@@ -30,6 +30,7 @@
 		868A28572B7790B600FCFD2D /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A28562B7790B600FCFD2D /* MapPresenter.swift */; };
 		868A28592B7790CC00FCFD2D /* MapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A28582B7790CC00FCFD2D /* MapEntity.swift */; };
 		868A285B2B7790DC00FCFD2D /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A285A2B7790DC00FCFD2D /* MapRouter.swift */; };
+		86990D852B793C600094ACDC /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86990D842B793C600094ACDC /* TemplateViewController.swift */; };
 		86D637C12B73AB18008550D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637C02B73AB18008550D3 /* AppDelegate.swift */; };
 		86D637C32B73AB18008550D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637C22B73AB18008550D3 /* SceneDelegate.swift */; };
 		86D637CA2B73AB19008550D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86D637C92B73AB19008550D3 /* Assets.xcassets */; };
@@ -89,6 +90,7 @@
 		868A28562B7790B600FCFD2D /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 		868A28582B7790CC00FCFD2D /* MapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEntity.swift; sourceTree = "<group>"; };
 		868A285A2B7790DC00FCFD2D /* MapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
+		86990D842B793C600094ACDC /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
 		86D637BD2B73AB18008550D3 /* SevenWindsCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SevenWindsCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D637C02B73AB18008550D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86D637C22B73AB18008550D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		865A7CD92B7694550002B765 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				86990D842B793C600094ACDC /* TemplateViewController.swift */,
 				865A7CDA2B7694A30002B765 /* Registration */,
 				86D637D42B73B3D7008550D3 /* Login */,
 				86D637F92B7400E4008550D3 /* CoffeeShops */,
@@ -472,6 +475,7 @@
 			files = (
 				86D638102B7508A0008550D3 /* MenuInteractor.swift in Sources */,
 				86D638142B750A02008550D3 /* MenuItemsEntity.swift in Sources */,
+				86990D852B793C600094ACDC /* TemplateViewController.swift in Sources */,
 				86D637EF2B73BB10008550D3 /* LoginEntity.swift in Sources */,
 				865A7CD82B765DBA0002B765 /* OrderItemTableViewCell.swift in Sources */,
 				86D638072B743538008550D3 /* AppConstants.swift in Sources */,

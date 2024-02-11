@@ -150,6 +150,7 @@ private extension MenuItemCollectionViewCell {
         
         vStack = UIStackView(arrangedSubviews: [nameLabel, hStack])
         vStack.axis = .vertical
+        vStack.distribution = .fillEqually
         vStack.spacing = 5
         vStack.alignment = .leading
         

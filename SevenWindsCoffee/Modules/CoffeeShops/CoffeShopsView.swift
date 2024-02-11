@@ -15,7 +15,7 @@ protocol CoffeeShopsViewProtocol: AnyViewProtocol {
     func showFetchError(message: String)
 }
 
-class CoffeeShopsViewController: UIViewController {
+class CoffeeShopsViewController: TemplateViewController {
     
     var presenter: CoffeeShopsPresenterProtocol?
     
@@ -64,10 +64,6 @@ class CoffeeShopsViewController: UIViewController {
         presenter?.fetchCoffeeShops()
     }
     
-    func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     func onMapButtonTaped() {
         presenter?.tapOnMapButton()
     }
@@ -86,22 +82,8 @@ extension CoffeeShopsViewController: CoffeeShopsViewProtocol {
 // MARK: - Setup View
 private extension CoffeeShopsViewController {
     func setupView() {
-        view.backgroundColor = .systemGray
         
         navigationItem.title = "Ближайшие кофейни"
-        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
-        
-        let backButton = UIButton(type: .custom)
-        backButton.tintColor = K.Design.primaryTextColor
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.addAction(
-            UIAction { [weak self] _ in
-                self?.backButtonTapped()
-            },
-            for: .touchUpInside)
-        let backBarButtonItem = UIBarButtonItem(customView: backButton)
-        navigationItem.leftBarButtonItem = backBarButtonItem
         
         addSubview()
         setupLayout()

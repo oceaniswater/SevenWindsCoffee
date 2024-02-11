@@ -20,7 +20,7 @@ enum AlertPresenter {
         controller.present(alertVC, animated: true)
         
         if preferredStyle == .actionSheet {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 alertVC.dismiss(animated: true)
             }
         }

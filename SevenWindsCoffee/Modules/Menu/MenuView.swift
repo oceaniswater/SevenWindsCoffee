@@ -13,9 +13,10 @@ protocol MenuViewProtocol: AnyViewProtocol {
     var presenter: MenuPresenterProtocol? {get set}
     func fetchMenuSuccess()
     func showFetchError(message: String)
+    func customError(title: String, message: String)
 }
 
-class MenuViewController: UIViewController {
+class MenuViewController: TemplateViewController {
     
     var presenter: MenuPresenterProtocol?
     
@@ -56,10 +57,6 @@ class MenuViewController: UIViewController {
         presenter?.fetchMenuItems()
     }
     
-    func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     func goToOrderButtonTaped() {
         presenter?.tapOnGoToOrderButton()
     }
@@ -74,28 +71,17 @@ extension MenuViewController: MenuViewProtocol {
         //
     }
     
+    func customError(title: String, message: String) {
+        AlertPresenter.present(from: self, with: title, message: message, preferredStyle: .actionSheet)
+    }
+    
     
 }
 
 // MARK: - Setup View
 private extension MenuViewController {
     func setupView() {
-        view.backgroundColor = .systemGray
-        
         navigationItem.title = "Меню"
-        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
-        
-        let backButton = UIButton(type: .custom)
-        backButton.tintColor = K.Design.primaryTextColor
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.addAction(
-            UIAction { [weak self] _ in
-                self?.backButtonTapped()
-            },
-            for: .touchUpInside)
-        let backBarButtonItem = UIBarButtonItem(customView: backButton)
-        navigationItem.leftBarButtonItem = backBarButtonItem
         
         addSubview()
         setupLayout()

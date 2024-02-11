@@ -68,6 +68,10 @@ class MenuPresenter: MenuPresenterProtocol, MenuInteractorOutputProtocol {
     
     func tapOnGoToOrderButton() {
         let filtredOrders = orders.filter({$0.count > 0})
+        if filtredOrders.isEmpty {
+            view?.customError(title: "Корзина пуста!", message: "Добавьте минимум один продукт.")
+            return
+        }
         router?.navigateToOrder(with: filtredOrders)
     }
     
