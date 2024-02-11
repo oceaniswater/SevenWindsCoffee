@@ -13,9 +13,11 @@ protocol MenuViewProtocol: AnyViewProtocol {
     var presenter: MenuPresenterProtocol? {get set}
     func fetchMenuSuccess()
     func showFetchError(message: String)
+    func customError(title: String, message: String)
+    func unauthorisedUser()
 }
 
-class MenuViewController: UIViewController {
+class MenuViewController: TemplateViewController {
     
     var presenter: MenuPresenterProtocol?
     
@@ -25,15 +27,15 @@ class MenuViewController: UIViewController {
         layout.minimumInteritemSpacing = 0.0
         layout.minimumLineSpacing = 0.0
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.backgroundColor = .clear
+        collection.backgroundColor = K.Design.secondBackroundColor
         return collection
     }()
     
     var goToOrderButton: UIButton = {
         let button = UIButton()
         button.setTitle("Перейти к оплате", for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = .black
+        button.tintColor = K.Design.buttonTextColor
+        button.backgroundColor = K.Design.buttonColor
         button.layer.cornerRadius = 25
         return button
     }()
@@ -46,7 +48,7 @@ class MenuViewController: UIViewController {
         return view
     }()
     
-    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,22 +58,28 @@ class MenuViewController: UIViewController {
         presenter?.fetchMenuItems()
     }
     
-    func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     func goToOrderButtonTaped() {
         presenter?.tapOnGoToOrderButton()
     }
 }
 
 extension MenuViewController: MenuViewProtocol {
+    func unauthorisedUser() {
+        AlertPresenter.present(from: self, with: "Ошибка авторизации", message: "Зарегистрируйтесь или войдите с помощью существущего логина и пароля.", action: UIAlertAction(title: "Ок", style: .default, handler: { [weak self] _ in
+            self?.navigationController?.popToRootViewController(animated: true)
+        }))
+    }
+    
     func fetchMenuSuccess() {
         reloadColectionView()
     }
     
     func showFetchError(message: String) {
-        //
+        AlertPresenter.present(from: self, with: "Ошибка", message: message, preferredStyle: .actionSheet)
+    }
+    
+    func customError(title: String, message: String) {
+        AlertPresenter.present(from: self, with: title, message: message, preferredStyle: .actionSheet)
     }
     
     
@@ -80,22 +88,7 @@ extension MenuViewController: MenuViewProtocol {
 // MARK: - Setup View
 private extension MenuViewController {
     func setupView() {
-        view.backgroundColor = .systemGray
-        
         navigationItem.title = "Меню"
-        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
-        
-        let backButton = UIButton(type: .custom)
-        backButton.tintColor = K.Design.primaryTextColor
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.addAction(
-            UIAction { [weak self] _ in
-                self?.backButtonTapped()
-            },
-            for: .touchUpInside)
-        let backBarButtonItem = UIBarButtonItem(customView: backButton)
-        navigationItem.leftBarButtonItem = backBarButtonItem
         
         addSubview()
         setupLayout()
@@ -105,14 +98,30 @@ private extension MenuViewController {
                 self?.goToOrderButtonTaped()
             },
             for: .touchUpInside)
-        
+    }
+}
+
+// MARK: - MenuCellDelegate
+extension MenuViewController: MenuCellDelegate {
+    func didCountChanged(count: UInt, identifier: Int?) {
+        if let identifier = identifier {
+            guard let orders = presenter?.orders as? OrderEntity else { return }
+            
+            let updatedOrders: OrderEntity = orders.map { order in
+                var updatedOrder = order
+                if order.item.id == identifier {
+                    updatedOrder.count = count
+                }
+                return updatedOrder
+            }
+            presenter?.orders = updatedOrders
+        }
     }
 }
 
 // MARK: - Setting View
 private extension MenuViewController {
     func addSubview() {
-        view.backgroundColor = K.Design.secondBackroundColor
         view.addSubview(menuCollection)
         view.addSubview(separatorView)
         view.addSubview(goToOrderButton)
@@ -145,31 +154,7 @@ private extension MenuViewController {
     }
 }
 
-extension MenuViewController: MenuCellDelegate {
-    func didCountChanged(count: UInt, identifier: Int?) {
-        // Handle the count change, along with the identifier
-        if let identifier = identifier {
-            // Create a new array with updated values
-            guard let orders = presenter?.orders as? OrderEntity else { return }
-            
-            let updatedOrders: OrderEntity = orders.map { order in
-                var updatedOrder = order
-                if order.item.id == identifier {
-                    updatedOrder.count = count
-                }
-                return updatedOrder
-            }
-            
-            // Update the original orders array
-            presenter?.orders = updatedOrders
-        }
-        
-        print(presenter?.orders)
-    }
-}
-
 #Preview(traits: .defaultLayout, body: {
     let vc = CoffeeShopsViewController()
     return vc
 })
-

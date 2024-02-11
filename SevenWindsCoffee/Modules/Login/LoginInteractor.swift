@@ -28,25 +28,30 @@ class LoginInteractor: LoginInteractorPtotocol {
     var output: LoginInteractorOutputProtocol!
     
     func loginUser(login: String, password: String) {
-
-        let provider = MoyaProvider<CoffeeShopAPI>()
-        
-        provider.request(.login(login: login, password: password)) { [weak self] result in
+        NetworkManager.shared.loginUser(login: login, password: password) { [weak self] result in
             switch result {
-            case .success(let response):
+            case .success(let decodedResponse):
                 // Handle success
-                if response.statusCode == 200 {
-                    let data = response.data
-                    let decodedResponse = try? JSONDecoder().decode(LoginEntity.self, from: data)
-                    guard let token = decodedResponse?.token else { return }
-                    self?.presenter?.loginSuccess(token: token, tokenLifetime: decodedResponse?.tokenLifetime ?? TimeInterval(123))
-                } else {
-                    self?.presenter?.loginError(message: response.description)
+                let token = decodedResponse.token
+                self?.presenter?.loginSuccess(token: token, tokenLifetime: decodedResponse.tokenLifetime)
+            case .failure(let networkError):
+                switch networkError {
+                case .unauthorised:
+                    self?.presenter?.loginError(message: networkError.localizedDescription)
+                    break
+                case .invalidStatusCode(_):
+                    self?.presenter?.loginError(message: networkError.localizedDescription)
+                    break
+                case .decodingError(_):
+                    self?.presenter?.loginError(message: networkError.localizedDescription)
+                    break
+                case .moyaError(_):
+                    self?.presenter?.loginError(message: networkError.localizedDescription)
+                    break
+                case .userExist:
+                    self?.presenter?.loginError(message: networkError.localizedDescription)
+                    break
                 }
-
-            case .failure(let error):
-                // Handle error
-                self?.presenter?.loginError(message: error.localizedDescription)
             }
         }
     }

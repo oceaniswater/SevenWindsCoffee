@@ -12,13 +12,13 @@ protocol MapViewProtocol: AnyViewProtocol {
     var presenter: MapPresenterProtocol? {get set}
     func fetchShopSuccess()
     func showFetchError(message: String)
+    func unauthorisedUser()
 }
 
-class MapViewController: UIViewController {
+class MapViewController: TemplateViewController {
     var presenter: MapPresenterProtocol?
     
     // MARK: - Public methods
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,14 +26,9 @@ class MapViewController: UIViewController {
         presenter?.fetchCoffeeShops()
     }
     
-    func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     // MARK: - Private methods
-    
     /// Sets the map to specified point, zoom, azimuth and tilt
-    private func move(to cameraPosition: YMKCameraPosition = Const.cameraPosition) {
+    private func move(to cameraPosition: YMKCameraPosition = K.Coordinates.cameraPosition) {
         map.move(with: cameraPosition, animation: YMKAnimation(type: .smooth, duration: 1.0))
     }
     
@@ -67,22 +62,18 @@ class MapViewController: UIViewController {
             )
             
             // Make placemark draggable
-            
             placemark.isDraggable = true
-            
+    
             // Add placemark tap handler
-            
             placemark.addTapListener(with: mapObjectTapListener)
         }
     }
     
     // MARK: - Private properties
-    
     private var mapView: YMKMapView!
     private var map: YMKMap!
     
     /// Handles map object taps
-    /// - Note: This should be declared as property to store a strong reference
     private lazy var mapObjectTapListener: YMKMapObjectTapListener = MapObjectTapListener(controller: self)
     
     // MARK: - Private nesting
@@ -104,13 +95,9 @@ class MapViewController: UIViewController {
         
         private weak var controller: UIViewController?
     }
-    
-    private enum Const {
-        static let point = YMKPoint(latitude: 44.83, longitude: 44.82)
-        static let cameraPosition = YMKCameraPosition(target: point, zoom: 9.0, azimuth: 150.0, tilt: 30.0)
-    }
 }
 
+// MARK: - MapViewProtocol
 extension MapViewController: MapViewProtocol {
     func fetchShopSuccess() {
         DispatchQueue.main.async {
@@ -121,27 +108,18 @@ extension MapViewController: MapViewProtocol {
     func showFetchError(message: String) {
         //
     }
+    
+    func unauthorisedUser() {
+        AlertPresenter.present(from: self, with: "Ошибка авторизации", message: "Зарегистрируйтесь или войдите с помощью существущего логина и пароля.", action: UIAlertAction(title: "Ок", style: .default, handler: { [weak self] _ in
+            self?.navigationController?.popToRootViewController(animated: true)
+        }))
+    }
 }
 
 // MARK: - Setup View
 private extension MapViewController {
     func setupView() {
-        view.backgroundColor = K.Design.secondBackroundColor
-        
         navigationItem.title = "Ближайшие кофейни"
-        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
-        
-        let backButton = UIButton(type: .custom)
-        backButton.tintColor = K.Design.primaryTextColor
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.addAction(
-            UIAction { [weak self] _ in
-                self?.backButtonTapped()
-            },
-            for: .touchUpInside)
-        let backBarButtonItem = UIBarButtonItem(customView: backButton)
-        navigationItem.leftBarButtonItem = backBarButtonItem
         
         addSubview()
         setupLayout()
@@ -157,10 +135,7 @@ private extension MapViewController {
 // MARK: - Setting
 private extension MapViewController {
     func addSubview() {
-        // Create new map view
         mapView = YMKMapView(frame: view.frame)
-        
-        // Add map to the view
         view.addSubview(mapView)
     }
 }

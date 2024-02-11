@@ -13,9 +13,10 @@ protocol OrderViewProtocol: AnyViewProtocol {
     var presenter: OrderPresenterProtocol? {get set}
     func fetchShopSuccess()
     func showFetchError(message: String)
+    func unauthorisedUser()
 }
 
-class OrderViewController: UIViewController {
+class OrderViewController: TemplateViewController {
     
     var presenter: OrderPresenterProtocol?
     
@@ -29,8 +30,10 @@ class OrderViewController: UIViewController {
     var orderButton: UIButton = {
         let button = UIButton()
         button.setTitle("Оплатить", for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = .black
+        button.tintColor = K.Design.buttonTextColor
+        button.backgroundColor = K.Design.buttonColor
+        button.layer.borderColor = K.Design.buttonBorderColor?.cgColor
+        button.layer.borderWidth = 1
         button.layer.cornerRadius = 25
         return button
     }()
@@ -53,8 +56,8 @@ class OrderViewController: UIViewController {
         label.lineBreakMode = .byTruncatingTail
         return label
     }()
-
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,51 +74,38 @@ class OrderViewController: UIViewController {
                 // Handle case where location permission is not granted
             }
         }
-        
         presenter?.fetchCoffeeShops()
-    }
-    
-    func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
     }
     
     func orderButtonTaped() {
     }
 }
 
+// MARK: - OrderViewProtocol
 extension OrderViewController: OrderViewProtocol {
     func fetchShopSuccess() {
         reloadTableView()
     }
     
     func showFetchError(message: String) {
-        print(message)
+        // show error
+    }
+    
+    func unauthorisedUser() {
+        AlertPresenter.present(from: self, with: "Ошибка авторизации", message: "Зарегистрируйтесь или войдите с помощью существущего логина и пароля.", action: UIAlertAction(title: "Ок", style: .default, handler: { [weak self] _ in
+            self?.navigationController?.popToRootViewController(animated: true)
+        }))
     }
 }
 
 // MARK: - Setup View
 private extension OrderViewController {
     func setupView() {
-        view.backgroundColor = .systemGray
-        
         navigationItem.title = "Ваш заказ"
-        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
-        
-        let backButton = UIButton(type: .custom)
-        backButton.tintColor = K.Design.primaryTextColor
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.addAction(
-            UIAction { [weak self] _ in
-                self?.backButtonTapped()
-            },
-            for: .touchUpInside)
-        let backBarButtonItem = UIBarButtonItem(customView: backButton)
-        navigationItem.leftBarButtonItem = backBarButtonItem
         
         addSubview()
         setupLayout()
-
+        
         orderButton.addAction(
             UIAction { [weak self] _ in
                 self?.orderButtonTaped()
@@ -128,7 +118,6 @@ private extension OrderViewController {
 // MARK: - Setting View
 private extension OrderViewController {
     func addSubview() {
-        view.backgroundColor = K.Design.secondBackroundColor
         view.addSubview(tableView)
         view.addSubview(separatorView)
         view.addSubview(orderButton)
@@ -139,7 +128,6 @@ private extension OrderViewController {
 // MARK: - Setup Layout
 private extension OrderViewController {
     func setupLayout() {
-        
         tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.leading.equalToSuperview().offset(10)

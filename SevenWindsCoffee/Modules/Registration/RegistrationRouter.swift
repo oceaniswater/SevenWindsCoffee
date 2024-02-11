@@ -39,6 +39,4 @@ class RegistrationRouter: RegistrationRouterProtocol {
         guard let vc = loginRouter.entryPoint else { return }
         entryPoint?.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
-

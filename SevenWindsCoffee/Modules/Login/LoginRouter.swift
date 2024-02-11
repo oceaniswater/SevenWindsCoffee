@@ -46,6 +46,4 @@ class LoginRouter: LoginRouterProtocol {
         guard let vc = coffeShopsRouter.entryPoint else { return }
         entryPoint?.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
 }

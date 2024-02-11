@@ -18,7 +18,7 @@ class MenuRouter: MenuRouterProtocol {
     
     static func start() -> AnyRouterProtocol {
         let router = MenuRouter()
-
+        
         return router
     }
     
@@ -46,7 +46,4 @@ class MenuRouter: MenuRouterProtocol {
         guard let vc = orderRouter.entryPoint else { return }
         entryPoint?.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
 }
-

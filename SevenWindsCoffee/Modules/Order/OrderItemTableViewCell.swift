@@ -8,11 +8,6 @@
 import UIKit
 import SnapKit
 
-protocol OrderTableViewCellInput: AnyObject {
-    var isCountable: Bool { get set }
-    var handler: ((UInt) -> Void)? { get set }
-}
-
 class OrderTableViewCell: UITableViewCell {
     
     public static var identifier: String {
@@ -75,14 +70,13 @@ class OrderTableViewCell: UITableViewCell {
         
         nameLabel.text = nil
         priceLabel.text = nil
+        stepper.prepareForReuse()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         backgroundColor = .clear
     }
-    
-
     
     // MARK: - Public methods
     func configure(with item: OrderEntityElement) {
@@ -92,7 +86,6 @@ class OrderTableViewCell: UITableViewCell {
     }
 }
 
-
 // MARK: - Setup Cell
 private extension OrderTableViewCell {
     func setupCell() {
@@ -100,7 +93,6 @@ private extension OrderTableViewCell {
         
         addSubview()
         setupLayout()
-        
     }
 }
 
@@ -116,11 +108,11 @@ private extension OrderTableViewCell {
         
         hStack = UIStackView(arrangedSubviews: [vStack, stepper])
         hStack.axis = .horizontal
-        hStack.spacing = 140
+//        hStack.spacing = 140
+        hStack.distribution = .fillProportionally
         hStack.alignment = .center
         
         view.addSubview(hStack)
-        
     }
 }
 
@@ -132,6 +124,10 @@ private extension OrderTableViewCell {
             make.width.equalTo(349)
             make.height.equalTo(71)
             make.bottom.equalToSuperview().inset(5)
+        }
+        
+        stepper.snp.makeConstraints { make in
+            make.width.equalTo(70)
         }
 
         hStack.snp.makeConstraints { make in
@@ -149,33 +145,10 @@ extension OrderTableViewCell: CounterDelegate {
     func didChanged(count: UInt, identifier: Int?) {
         //
     }
-    
-    func didChanged(count: UInt) {
-        countHandler?(count)
-    }
 }
-
-extension OrderTableViewCell: OrderTableViewCellInput {
-    var isCountable: Bool {
-        get { !stepper.isHidden }
-        set {
-            stepper.isHidden = !newValue
-            layoutIfNeeded()
-        }
-    }
-
-    var handler: ((UInt) -> Void)? {
-        get { countHandler }
-        set { countHandler = newValue }
-    }
-}
-
-
-
 
 #Preview(traits: .defaultLayout, body: {
     let view = OrderTableViewCell()
-    view.configure(with: OrderEntityElement(item: MenuItemsEntityElement(id: 1, name: "Americano", imageURL: "", price: 200), count: 1))
+    view.configure(with: OrderEntityElement(item: MenuItemsEntityElement(id: 1, name: "AmericanoAmericano Americano", imageURL: "", price: 200), count: 1))
     return view
 })
-

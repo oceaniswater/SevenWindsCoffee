@@ -20,8 +20,6 @@ extension CoffeeShopAPI: TargetType {
         return URL(string: K.Network.server)!
     }
     
-    //nscurl http://147.78.66.203:3210 --verbose --ats-diagnostics
-    
     var path: String {
         switch self {
         case .login:
@@ -66,21 +64,3 @@ extension CoffeeShopAPI: TargetType {
         return Data()
     }
 }
-
-
-//// Example usage for GET request with Bearer token
-//let provider = MoyaProvider<CoffeeShopAPI>()
-//let token = "yourBearerToken"
-//
-//provider.request(.getLocations(token: token)) { result in
-//    switch result {
-//    case .success(let response):
-//        // Handle success
-//        let data = response.data
-//        let decodedResponse = try? JSONDecoder().decode([Location].self, from: data)
-//        print(decodedResponse)
-//    case .failure(let error):
-//        // Handle error
-//        print(error.localizedDescription)
-//    }
-//}

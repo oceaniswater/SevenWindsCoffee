@@ -38,7 +38,7 @@ extension CoffeeShopsViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CoffeeShopTableViewCell.identifier, for: indexPath) as? CoffeeShopTableViewCell else { return UITableViewCell() }
-
+        
         guard let shop = self.presenter?.shops[indexPath.row] else { return UITableViewCell() }
         cell.configure(with: shop)
         cell.selectionStyle = .none
@@ -51,6 +51,4 @@ extension CoffeeShopsViewController: UITableViewDelegate, UITableViewDataSource 
         guard let shopId = presenter?.shops[indexPath.row].id else { return }
         presenter?.tapOnItem(id: shopId)
     }
-    
-    
 }

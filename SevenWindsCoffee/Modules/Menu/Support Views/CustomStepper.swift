@@ -9,14 +9,12 @@ protocol CounterDelegate: AnyObject {
 class Counter: UIView {
     
     // MARK: - Data types
-    
     enum Style {
         case forCollection
         case forTable
     }
     
     // MARK: - Views
-    
     private lazy var minusButton: UIButton = {
         let view = UIButton()
         switch style {
@@ -62,7 +60,6 @@ class Counter: UIView {
     private var stackView: UIStackView!
     
     // MARK: - Properties
-    
     private var style: Style
     
     private var identifier: Int?
@@ -77,7 +74,6 @@ class Counter: UIView {
     weak var delegate: CounterDelegate?
     
     // MARK: - Lifecycle
-    
     private override init(frame: CGRect) {
         style = .forTable
         super.init(frame: frame)
@@ -95,19 +91,18 @@ class Counter: UIView {
     }
     
     // MARK: - Public methods
-    
     // Setter method for the identifier
     func setIdentifier(_ identifier: Int?) {
         self.identifier = identifier
     }
-
+    
     // Getter method for the identifier
     func getIdentifier() -> Int? {
         return identifier
     }
 }
 
-    
+
 // MARK: - Setup Cell
 private extension Counter {
     func setupView() {
@@ -145,7 +140,7 @@ private extension Counter {
     }
 }
 
-    // MARK: - Logic
+// MARK: - Logic
 private extension Counter {
     @objc func minusButtonAction() {
         guard count > 0 else { return }
@@ -162,5 +157,9 @@ private extension Counter {
 extension Counter {
     func setCounterValue(with count: UInt) {
         self.count = count
+    }
+    
+    func prepareForReuse() {
+        countLabel.text = nil
     }
 }

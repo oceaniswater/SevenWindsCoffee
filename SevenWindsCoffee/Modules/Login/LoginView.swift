@@ -10,41 +10,40 @@ import SnapKit
 import Foundation
 
 protocol AnyViewProtocol: AnyObject {
-    
 }
 
 protocol LoginViewProtocol: AnyViewProtocol {
     var presenter: LoginPresenterProtocol? {get set}
     func showLoginSuccess()
     func showLoginError(message: String)
+    func displayValidationError(_ error: ValidationError)
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: TemplateViewController {
     
     var presenter: LoginPresenterProtocol?
     
     var emailLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15.0)
+        label.font = UIFont(name: "SFUIDisplay-Regular", size: 15.0)
         label.textAlignment = .left
         label.text = "e-mail"
-        label.tintColor = K.Design.primaryTextColor
+        label.textColor = K.Design.primaryTextColor
         return label
     }()
     
     var emailTextField: UITextField = {
         let textField = AuthTextField(symbol: nil, placeholder: "example@example.ru")
         textField.tag = 0
-        textField.text = "1234567@gamil.com"
         return textField
     }()
     
     var passwordLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15.0)
+        label.font = UIFont(name: "SFUIDisplay-Regular", size: 15.0)
         label.textAlignment = .left
         label.text = "Пароль"
-        label.tintColor = K.Design.primaryTextColor
+        label.textColor = K.Design.primaryTextColor
         return label
     }()
     
@@ -52,7 +51,6 @@ class LoginViewController: UIViewController {
         let textField = AuthTextField(symbol: nil, placeholder: "******")
         textField.tag = 1
         textField.isSecureTextEntry = true
-        textField.text = "12347889"
         return textField
     }()
     
@@ -66,7 +64,7 @@ class LoginViewController: UIViewController {
         button.layer.cornerRadius = 25
         return button
     }()
-
+    
     var emailStack: UIStackView!
     var passwordStack: UIStackView!
     
@@ -84,8 +82,7 @@ class LoginViewController: UIViewController {
         return view
     }()
     
-    
-    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -98,6 +95,46 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    func loggingButtonTaped() {
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text else { return }
+        if let valid = presenter?.validateFields(email: email, password: password), valid == true {
+            presenter?.loginButtonTapped(login: email, password: password)
+            view.endEditing(true)
+        }
+    }
+}
+
+// MARK: - LoginViewProtocol
+extension LoginViewController: LoginViewProtocol {
+    func showLoginSuccess() {
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
+    func showLoginError(message: String) {
+        AlertPresenter.present(from: self, with: "Ошибка", message: message, action: UIAlertAction(title: "Ok", style: .default))
+    }
+    
+    func displayValidationError(_ error: ValidationError) {
+        switch error {
+        case .emptyFieldsError:
+            // Show error message for empty fields
+            AlertPresenter.present(from: self, with: "Ошибка", message: "Оба поля должны быть заполненны.", action: UIAlertAction(title: "Ok", style: .default))
+            break
+        case .emailNotValidError:
+            // Show error message for invalid email
+            AlertPresenter.present(from: self, with: "Ошибка", message: "Некорректный email.", action: UIAlertAction(title: "Ok", style: .default))
+            break
+        case .passwordNotMaching:
+            AlertPresenter.present(from: self, with: "Ошибка", message: "Пароли не совпадают.", action: UIAlertAction(title: "Ok", style: .default))
+            break
+        }
+    }
+}
+
+// MARK: - Observe keyboard
+private extension LoginViewController {
     private func startObservingKeyobard() {
         NotificationCenter.default.addObserver(
             self,
@@ -112,63 +149,24 @@ class LoginViewController: UIViewController {
             object: nil
         )
     }
-
+    
     @objc private func keyboardWillShow(notification: NSNotification) {
         if view.frame.origin.y == 0 {
             view.frame.origin.y -= 40
         }
     }
-
+    
     @objc private func keyboardWillHide(notification: NSNotification) {
         if view.frame.origin.y != 0 {
             view.frame.origin.y = 0
         }
-    }
-
-    
-    func loggingButtonTaped() {
-        guard let email = emailTextField.text,
-              let password = passwordTextField.text else { return }
-        guard !email.isEmpty, !password.isEmpty else {
-            AlertPresenter.present(from: self, with: "Ошибка", message: "Оба поля должны быть заполнены.", action: UIAlertAction(title: "Ok", style: .default))
-            return }
-        presenter?.loginButtonTapped(login: email, password: password)
-        view.endEditing(true)
-    }
-    
-    func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-}
-
-extension LoginViewController: LoginViewProtocol {
-    func showLoginSuccess() {
-    }
-    
-    func showLoginError(message: String) {
-        AlertPresenter.present(from: self, with: "Ошибка", message: message, action: UIAlertAction(title: "Ok", style: .default))
     }
 }
 
 // MARK: - Setup View
 private extension LoginViewController {
     func setupView() {
-        view.backgroundColor = K.Design.secondBackroundColor
-        
         navigationItem.title = "Вход"
-        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
-        
-        let backButton = UIButton(type: .custom)
-        backButton.tintColor = K.Design.primaryTextColor
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.addAction(
-            UIAction { [weak self] _ in
-                self?.backButtonTapped()
-            },
-            for: .touchUpInside)
-        let backBarButtonItem = UIBarButtonItem(customView: backButton)
-        navigationItem.leftBarButtonItem = backBarButtonItem
         
         addSubview()
         setupLayout()
@@ -178,14 +176,12 @@ private extension LoginViewController {
                 self?.loggingButtonTaped()
             },
             for: .touchUpInside)
-        
     }
 }
 
 // MARK: - Setting View
 private extension LoginViewController {
     func addSubview() {
-        
         view.addSubview(formView)
         view.addSubview(separatorView)
         
@@ -245,7 +241,7 @@ private extension LoginViewController {
             make.centerX.equalToSuperview()
             make.height.equalTo(73)
         }
-    
+        
         logInButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(478)
             make.width.equalTo(338)

@@ -15,6 +15,7 @@ protocol OrderPresenterProtocol {
     func fetchCoffeeShops()
     func fetchSuccess(items: OrderEntity)
     func fetchError(message: String)
+    func unauthorisedUser()
     
     var items: OrderEntity { get set }
     func numberOfSections() -> Int
@@ -34,17 +35,19 @@ class OrderPresenter: OrderPresenterProtocol, OrderInteractorOutputProtocol {
     }
     
     func fetchCoffeeShops() {
-//        guard let token = KeychainHelper.shared.getCredentials() else { return }
-//        interactor?.fetchData(token: token)
+        guard let token = KeychainHelper.shared.getCredentials() else { return }
+        interactor?.fetchData(token: token)
     }
     
     func fetchSuccess(items: OrderEntity) {
-//        self.items = items
-//        view?.fetchShopSuccess()
     }
     
     func fetchError(message: String) {
         view?.showFetchError(message: message)
+    }
+    
+    func unauthorisedUser() {
+        view?.unauthorisedUser()
     }
     
     func numberOfSections() -> Int {

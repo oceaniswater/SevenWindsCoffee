@@ -15,6 +15,7 @@ protocol CoffeeShopsPresenterProtocol {
     func fetchCoffeeShops()
     func fetchSuccess(shops: CoffeeShopsEntity)
     func fetchError(message: String)
+    func unauthorisedUser()
     
     func tapOnItem(id: Int)
     func tapOnMapButton()
@@ -25,7 +26,6 @@ protocol CoffeeShopsPresenterProtocol {
 }
 
 class CoffeShopsPresenter: CoffeeShopsPresenterProtocol, CoffeeShopsInteractorOutputProtocol {
-    
     var router: CoffeeShopsRouterProtocol?
     var interactor: CoffeeShopsInteractorPtotocol?
     var view: CoffeeShopsViewProtocol?
@@ -35,7 +35,6 @@ class CoffeShopsPresenter: CoffeeShopsPresenterProtocol, CoffeeShopsInteractorOu
     init() {
         fetchCoffeeShops()
     }
-    
     
     func fetchCoffeeShops() {
         guard let token = KeychainHelper.shared.getCredentials() else { return }
@@ -59,6 +58,10 @@ class CoffeShopsPresenter: CoffeeShopsPresenterProtocol, CoffeeShopsInteractorOu
         view?.showFetchError(message: message)
     }
     
+    func unauthorisedUser() {
+        view?.unauthorisedUser()
+    }
+    
     func numberOfSections() -> Int {
         1
     }
@@ -67,4 +70,3 @@ class CoffeShopsPresenter: CoffeeShopsPresenterProtocol, CoffeeShopsInteractorOu
         return self.shops.count
     }
 }
-

@@ -15,6 +15,7 @@ protocol MapPresenterProtocol {
     func fetchCoffeeShops()
     func fetchSuccess(shops: CoffeeShopsEntity)
     func fetchError(message: String)
+    func unauthorisedUser()
     
     func tapOnPlacemark(id: Int)
     
@@ -33,7 +34,6 @@ class MapPresenter: MapPresenterProtocol, MapInteractorOutputProtocol {
         fetchCoffeeShops()
     }
     
-    
     func fetchCoffeeShops() {
         guard let token = KeychainHelper.shared.getCredentials() else { return }
         interactor?.fetchData(token: token)
@@ -50,5 +50,9 @@ class MapPresenter: MapPresenterProtocol, MapInteractorOutputProtocol {
     
     func fetchError(message: String) {
         view?.showFetchError(message: message)
+    }
+    
+    func unauthorisedUser() {
+        view?.unauthorisedUser()
     }
 }

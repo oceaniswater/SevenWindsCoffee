@@ -92,14 +92,13 @@ class MenuItemCollectionViewCell: UICollectionViewCell {
         
         nameLabel.text = nil
         priceLabel.text = nil
+        stepper.prepareForReuse()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         backgroundColor = .clear
     }
-    
-
     
     // MARK: - Public methods
     func configure(with item: MenuItemsEntityElement) {
@@ -128,10 +127,9 @@ class MenuItemCollectionViewCell: UICollectionViewCell {
 private extension MenuItemCollectionViewCell {
     func setupCell() {
         backgroundColor = .clear
-
+        
         addSubview()
         setupLayout()
-        
     }
 }
 
@@ -141,7 +139,7 @@ private extension MenuItemCollectionViewCell {
         addSubview(view)
         view.addSubview(productImageView)
         view.addSubview(loaderView)
-
+        
         hStack = UIStackView(arrangedSubviews: [priceLabel, stepper])
         hStack.axis = .horizontal
         hStack.spacing = 0
@@ -150,6 +148,7 @@ private extension MenuItemCollectionViewCell {
         
         vStack = UIStackView(arrangedSubviews: [nameLabel, hStack])
         vStack.axis = .vertical
+        vStack.distribution = .fillEqually
         vStack.spacing = 5
         vStack.alignment = .leading
         
@@ -174,7 +173,7 @@ private extension MenuItemCollectionViewCell {
         loaderView.snp.makeConstraints { make in
             make.center.equalTo(productImageView.snp.center)
         }
-
+        
         vStack.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(10)
             make.trailing.equalToSuperview().offset(-10)
@@ -189,7 +188,6 @@ extension MenuItemCollectionViewCell: CounterDelegate {
         delegate?.didCountChanged(count: count, identifier: identifier)
     }
 }
-
 
 #Preview(traits: .defaultLayout, body: {
     let view = MenuItemCollectionViewCell()

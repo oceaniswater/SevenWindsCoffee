@@ -23,21 +23,29 @@ class OrderInteractor: OrderInteractorPtotocol {
     
     var output: OrderInteractorOutputProtocol!
     
+    // делаю это чтобы отловить протухший токен на всякий случай
     func fetchData(token: String) {
-
-        let provider = MoyaProvider<CoffeeShopAPI>()
-        
-        provider.request(.getLocations(token: token)) { [weak self] result in
+        NetworkManager.shared.fetchCoffeeShops(token: token) { [weak self] result in
             switch result {
-            case .success(let response):
-                // Handle success
-                let data = response.data
-                let decodedResponse = try? JSONDecoder().decode(CoffeeShopsEntity.self, from: data)
-                guard let shops = decodedResponse else { return }
-//                self?.presenter?.fetchSuccess(shops: shops)
-            case .failure(let error):
-                // Handle error
-                self?.presenter?.fetchError(message: error.localizedDescription)
+            case .success(let coffeeShops):
+                break
+            case .failure(let networkError):
+                switch networkError {
+                case .unauthorised:
+                    self?.presenter?.unauthorisedUser()
+                    break
+                case .invalidStatusCode(_):
+                    self?.presenter?.fetchError(message: networkError.localizedDescription)
+                    break
+                case .decodingError(_):
+                    self?.presenter?.fetchError(message: networkError.localizedDescription)
+                    break
+                case .moyaError(_):
+                    self?.presenter?.fetchError(message: networkError.localizedDescription)
+                    break
+                case .userExist:
+                    break
+                }
             }
         }
     }

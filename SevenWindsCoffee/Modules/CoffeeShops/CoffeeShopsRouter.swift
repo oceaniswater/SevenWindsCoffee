@@ -46,6 +46,4 @@ class CoffeeShopsRouter: CoffeeShopsRouterProtocol {
         guard let vc = mapRouter.entryPoint else { return }
         entryPoint?.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
 }

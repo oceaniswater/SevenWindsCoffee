@@ -55,10 +55,8 @@ class CoffeeShopTableViewCell: UITableViewCell {
     
     private var vStack: UIStackView!
     
-    
     override func prepareForReuse() {
         super.prepareForReuse()
-        
         nameLabel.text = nil
         locationLabel.text = nil
     }
@@ -67,8 +65,6 @@ class CoffeeShopTableViewCell: UITableViewCell {
         super.layoutSubviews()
         backgroundColor = .clear
     }
-    
-
     
     // MARK: - Public methods
     func configure(with shop: CoffeeShopsEntityElement) {
@@ -87,7 +83,6 @@ private extension CoffeeShopTableViewCell {
         
         addSubview()
         setupLayout()
-        
     }
 }
 
@@ -95,7 +90,6 @@ private extension CoffeeShopTableViewCell {
 private extension CoffeeShopTableViewCell {
     func addSubview() {
         addSubview(view)
-
         
         vStack = UIStackView(arrangedSubviews: [nameLabel, locationLabel])
         vStack.axis = .vertical
@@ -116,14 +110,13 @@ private extension CoffeeShopTableViewCell {
             make.height.equalTo(71)
             make.bottom.equalToSuperview().inset(5)
         }
-
+        
         vStack.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(10)
         }
     }
 }
-
 
 #Preview(traits: .defaultLayout, body: {
     let view = CoffeeShopTableViewCell()

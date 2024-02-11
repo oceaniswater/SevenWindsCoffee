@@ -24,22 +24,28 @@ class MenuInteractor: MenuInteractorPtotocol {
     var output: MenuInteractorOutputProtocol!
     
     func fetchData(token: String, id: Int) {
-
-        let provider = MoyaProvider<CoffeeShopAPI>()
-        
-        provider.request(.getMenu(locationId: id, token: token)) { [weak self] result in
+        NetworkManager.shared.fetchMenuItems(token: token, locationId: id) { [weak self] result in
             switch result {
-            case .success(let response):
-                // Handle success
-                let data = response.data
-                let decodedResponse = try? JSONDecoder().decode(MenuItemsEntity.self, from: data)
-                guard let items = decodedResponse else { return }
+            case .success(let items):
                 self?.presenter?.fetchSuccess(items: items)
-            case .failure(let error):
-                // Handle error
-                self?.presenter?.fetchError(message: error.localizedDescription)
+            case .failure(let networkError):
+                switch networkError {
+                case .unauthorised:
+                    self?.presenter?.unauthorisedUser()
+                    break
+                case .invalidStatusCode(_):
+                    self?.presenter?.fetchError(message: networkError.localizedDescription)
+                    break
+                case .decodingError(_):
+                    self?.presenter?.fetchError(message: networkError.localizedDescription)
+                    break
+                case .moyaError(_):
+                    self?.presenter?.fetchError(message: networkError.localizedDescription)
+                    break
+                case .userExist:
+                    break
+                }
             }
         }
     }
 }
-

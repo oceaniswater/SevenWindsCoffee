@@ -10,12 +10,12 @@ import Moya
 
 protocol RegistrationInteractorPtotocol: AnyInteractorProtocol {
     var presenter: RegistrationPresenterProtocol? {get set}
-    func loginUser(login: String, password: String)
+    func registrateUser(login: String, password: String)
 }
 
 protocol RegistrationInteractorOutputProtocol: AnyObject {
-    func loginSuccess(token: String, tokenLifetime: TimeInterval)
-    func loginError(message: String)
+    func registrationSuccess(token: String, tokenLifetime: TimeInterval)
+    func registrationError(message: String)
 }
 
 class RegistrationInteractor: RegistrationInteractorPtotocol {
@@ -23,23 +23,32 @@ class RegistrationInteractor: RegistrationInteractorPtotocol {
     
     var output: RegistrationInteractorOutputProtocol!
     
-    func loginUser(login: String, password: String) {
-
-        let provider = MoyaProvider<CoffeeShopAPI>()
-        
-        provider.request(.register(login: login, password: password)) { [weak self] result in
+    func registrateUser(login: String, password: String) {
+        NetworkManager.shared.registerUser(login: login, password: password) { [weak self] result in
             switch result {
-            case .success(let response):
+            case .success(let decodedResponse):
                 // Handle success
-                let data = response.data
-                let decodedResponse = try? JSONDecoder().decode(LoginEntity.self, from: data)
-                guard let token = decodedResponse?.token else { return }
-                self?.presenter?.loginSuccess(token: token, tokenLifetime: decodedResponse?.tokenLifetime ?? TimeInterval(123))
-            case .failure(let error):
-                // Handle error
-                self?.presenter?.loginError(message: error.localizedDescription)
+                let token = decodedResponse.token
+                self?.presenter?.registrationSuccess(token: token, tokenLifetime: decodedResponse.tokenLifetime)
+            case .failure(let networkError):
+                switch networkError {
+                case .unauthorised:
+                    self?.presenter?.registrationError(message: networkError.localizedDescription)
+                    break
+                case .invalidStatusCode(_):
+                    self?.presenter?.registrationError(message: networkError.localizedDescription)
+                    break
+                case .decodingError(_):
+                    self?.presenter?.registrationError(message: networkError.localizedDescription)
+                    break
+                case .moyaError(_):
+                    self?.presenter?.registrationError(message: networkError.localizedDescription)
+                    break
+                case .userExist:
+                    self?.presenter?.registrationError(message: networkError.localizedDescription)
+                    break
+                }
             }
         }
     }
 }
-

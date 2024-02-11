@@ -10,7 +10,6 @@ import Foundation
 
 protocol MapRouterProtocol: AnyRouterProtocol {
     func navigateToMenu(id: Int)
-    func navigateToMap()
 }
 
 class MapRouter: MapRouterProtocol {
@@ -40,10 +39,4 @@ class MapRouter: MapRouterProtocol {
         guard let vc = menuRouter.entryPoint else { return }
         entryPoint?.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    func navigateToMap() {
-       //
-    }
-    
-    
 }

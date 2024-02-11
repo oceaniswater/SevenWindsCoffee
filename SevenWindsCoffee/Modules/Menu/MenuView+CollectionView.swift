@@ -14,11 +14,11 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         DispatchQueue.main.async {
             self.menuCollection.reloadData()
         }
-
+        
     }
     
     func setupCollectionView() {
-
+        
         self.menuCollection.delegate = self
         self.menuCollection.dataSource = self
         self.menuCollection.showsVerticalScrollIndicator = false
@@ -38,7 +38,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.presenter?.numberOfSection() ?? 0
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -51,6 +51,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension MenuViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 165, height: 205)

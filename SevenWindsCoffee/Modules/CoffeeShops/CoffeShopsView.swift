@@ -13,9 +13,10 @@ protocol CoffeeShopsViewProtocol: AnyViewProtocol {
     var presenter: CoffeeShopsPresenterProtocol? {get set}
     func fetchShopSuccess()
     func showFetchError(message: String)
+    func unauthorisedUser()
 }
 
-class CoffeeShopsViewController: UIViewController {
+class CoffeeShopsViewController: TemplateViewController {
     
     var presenter: CoffeeShopsPresenterProtocol?
     
@@ -29,8 +30,10 @@ class CoffeeShopsViewController: UIViewController {
     var onMapButton: UIButton = {
         let button = UIButton()
         button.setTitle("На карте", for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = .black
+        button.tintColor = K.Design.buttonTextColor
+        button.backgroundColor = K.Design.buttonColor
+        button.layer.borderColor = K.Design.buttonBorderColor?.cgColor
+        button.layer.borderWidth = 1
         button.layer.cornerRadius = 25
         return button
     }()
@@ -42,8 +45,8 @@ class CoffeeShopsViewController: UIViewController {
         view.layer.borderWidth = 0.5
         return view
     }()
-
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,15 +67,12 @@ class CoffeeShopsViewController: UIViewController {
         presenter?.fetchCoffeeShops()
     }
     
-    func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     func onMapButtonTaped() {
         presenter?.tapOnMapButton()
     }
 }
 
+// MARK: - CoffeeShopsViewProtocol
 extension CoffeeShopsViewController: CoffeeShopsViewProtocol {
     func fetchShopSuccess() {
         reloadTableView()
@@ -81,44 +81,33 @@ extension CoffeeShopsViewController: CoffeeShopsViewProtocol {
     func showFetchError(message: String) {
         print(message)
     }
+    
+    func unauthorisedUser() {
+        AlertPresenter.present(from: self, with: "Ошибка авторизации", message: "Зарегистрируйтесь или войдите с помощью существущего логина и пароля.", action: UIAlertAction(title: "Ок", style: .default, handler: { [weak self] _ in
+            self?.navigationController?.popToRootViewController(animated: true)
+        }))
+    }
 }
 
 // MARK: - Setup View
 private extension CoffeeShopsViewController {
     func setupView() {
-        view.backgroundColor = .systemGray
-        
         navigationItem.title = "Ближайшие кофейни"
-        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
-        
-        let backButton = UIButton(type: .custom)
-        backButton.tintColor = K.Design.primaryTextColor
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.addAction(
-            UIAction { [weak self] _ in
-                self?.backButtonTapped()
-            },
-            for: .touchUpInside)
-        let backBarButtonItem = UIBarButtonItem(customView: backButton)
-        navigationItem.leftBarButtonItem = backBarButtonItem
         
         addSubview()
         setupLayout()
-
+        
         onMapButton.addAction(
             UIAction { [weak self] _ in
                 self?.onMapButtonTaped()
             },
             for: .touchUpInside)
-        
     }
 }
 
 // MARK: - Setting View
 private extension CoffeeShopsViewController {
     func addSubview() {
-        view.backgroundColor = K.Design.secondBackroundColor
         view.addSubview(tableView)
         view.addSubview(separatorView)
         view.addSubview(onMapButton)
@@ -128,7 +117,6 @@ private extension CoffeeShopsViewController {
 // MARK: - Setup Layout
 private extension CoffeeShopsViewController {
     func setupLayout() {
-        
         tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.leading.equalToSuperview().offset(10)

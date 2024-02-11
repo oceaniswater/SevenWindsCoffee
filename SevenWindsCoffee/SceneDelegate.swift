@@ -15,10 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let loginRouter = LoginRouter.start()
         let registrationRouter = RegistrationRouter.start()
         
-        let initialVC = loginRouter.entryPoint
+        let initialVC = registrationRouter.entryPoint
         
         let window = UIWindow(windowScene: windowScene)
         guard let initialVC = initialVC else { return }

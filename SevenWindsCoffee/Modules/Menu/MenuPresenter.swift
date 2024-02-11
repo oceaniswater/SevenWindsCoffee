@@ -15,6 +15,7 @@ protocol MenuPresenterProtocol {
     func fetchMenuItems()
     func fetchSuccess(items: MenuItemsEntity)
     func fetchError(message: String)
+    func unauthorisedUser()
     
     func tapOnGoToOrderButton()
     
@@ -58,6 +59,10 @@ class MenuPresenter: MenuPresenterProtocol, MenuInteractorOutputProtocol {
         view?.showFetchError(message: message)
     }
     
+    func unauthorisedUser() {
+        view?.unauthorisedUser()
+    }
+    
     func numberOfSection() -> Int {
         1
     }
@@ -68,6 +73,10 @@ class MenuPresenter: MenuPresenterProtocol, MenuInteractorOutputProtocol {
     
     func tapOnGoToOrderButton() {
         let filtredOrders = orders.filter({$0.count > 0})
+        if filtredOrders.isEmpty {
+            view?.customError(title: "Корзина пуста!", message: "Добавьте минимум один продукт.")
+            return
+        }
         router?.navigateToOrder(with: filtredOrders)
     }
     

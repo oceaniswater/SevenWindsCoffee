@@ -38,7 +38,7 @@ extension OrderViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.identifier, for: indexPath) as? OrderTableViewCell else { return UITableViewCell() }
-
+        
         guard let item = self.presenter?.items[indexPath.row] else { return UITableViewCell() }
         cell.configure(with: item)
         cell.selectionStyle = .none
@@ -47,4 +47,3 @@ extension OrderViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
 }
-

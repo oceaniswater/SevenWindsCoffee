@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+// MARK: - RegistrationEntity
+struct RegistrationEntity: Codable {
+    let token: String
+    let tokenLifetime: TimeInterval
+}

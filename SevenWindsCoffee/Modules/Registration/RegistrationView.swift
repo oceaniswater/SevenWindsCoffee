@@ -12,10 +12,11 @@ import Foundation
 protocol RegistrationViewProtocol: AnyViewProtocol {
     var presenter: RegistrationPresenterProtocol? {get set}
     func registerSuccess()
-    func showLoginError(message: String)
+    func showRegistrationError(message: String)
+    func displayValidationError(_ error: ValidationError)
 }
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: TemplateViewController {
     
     var presenter: RegistrationPresenterProtocol?
     
@@ -31,7 +32,6 @@ class RegistrationViewController: UIViewController {
     var emailTextField: UITextField = {
         let textField = AuthTextField(symbol: nil, placeholder: "example@example.ru")
         textField.tag = 0
-        textField.text = "1234567@gamil.com"
         return textField
     }()
     
@@ -78,7 +78,7 @@ class RegistrationViewController: UIViewController {
         button.layer.cornerRadius = 25
         return button
     }()
-
+    
     var emailStack: UIStackView!
     var passwordStack: UIStackView!
     var passwordRepeatStack: UIStackView!
@@ -97,13 +97,11 @@ class RegistrationViewController: UIViewController {
         return view
     }()
     
-    
-    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
-        
         startObservingKeyobard()
     }
     
@@ -112,6 +110,19 @@ class RegistrationViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    func registerButtonTaped() {
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text,
+              let password2 = passwordRepeatTextField.text else { return }
+        if let isValid = presenter?.validateFields(email: email, password: password, password2: password2), isValid == true {
+            presenter?.registerButtonTapped(login: email, password: password)
+            view.endEditing(true)
+        }
+    }
+}
+
+// MARK: - Observe keyboard
+extension RegistrationViewController {
     func startObservingKeyobard() {
         NotificationCenter.default.addObserver(
             self,
@@ -126,52 +137,54 @@ class RegistrationViewController: UIViewController {
             object: nil
         )
     }
-
+    
     @objc private func keyboardWillShow(notification: NSNotification) {
         if view.frame.origin.y == 0 {
             view.frame.origin.y -= 90
         }
     }
-
+    
     @objc private func keyboardWillHide(notification: NSNotification) {
         if view.frame.origin.y != 0 {
             view.frame.origin.y = 0
         }
     }
-
-    
-    func registerButtonTaped() {
-        guard let email = emailTextField.text,
-              let password = passwordTextField.text,
-              let password2 = passwordRepeatTextField.text else { return }
-        guard !email.isEmpty, !password.isEmpty, !password2.isEmpty else {
-            AlertPresenter.present(from: self, with: "Ошибка", message: "Оба поля должны быть заполнены.", action: UIAlertAction(title: "Ok", style: .default))
-            return }
-        guard password == password2 else {
-            AlertPresenter.present(from: self, with: "Ошибка", message: "Пароли должны совпадать.", action: UIAlertAction(title: "Ok", style: .default))
-            return }
-        presenter?.loginButtonTapped(login: email, password: password)
-        view.endEditing(true)
-    }
 }
 
+// MARK: - RegistrationViewProtocol
 extension RegistrationViewController: RegistrationViewProtocol {
     func registerSuccess() {
+        emailTextField.text = ""
+        passwordTextField.text = ""
+        passwordRepeatTextField.text = ""
     }
     
-    func showLoginError(message: String) {
+    func showRegistrationError(message: String) {
         AlertPresenter.present(from: self, with: "Ошибка", message: message, action: UIAlertAction(title: "Ok", style: .default))
+    }
+    
+    func displayValidationError(_ error: ValidationError) {
+        switch error {
+        case .emptyFieldsError:
+            // Show error message for empty fields
+            AlertPresenter.present(from: self, with: "Ошибка", message: "Все поля должны быть заполненны.", action: UIAlertAction(title: "Ok", style: .default))
+            break
+        case .emailNotValidError:
+            // Show error message for invalid email
+            AlertPresenter.present(from: self, with: "Ошибка", message: "Некорректный email.", action: UIAlertAction(title: "Ok", style: .default))
+            break
+        case .passwordNotMaching:
+            AlertPresenter.present(from: self, with: "Ошибка", message: "Пароли не совпадают.", action: UIAlertAction(title: "Ok", style: .default))
+            break
+        }
     }
 }
 
 // MARK: - Setup View
 private extension RegistrationViewController {
     func setupView() {
-        view.backgroundColor = K.Design.secondBackroundColor
-        
         navigationItem.title = "Регистрация"
-        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
+        navigationItem.leftBarButtonItem?.isHidden = true
         
         addSubview()
         setupLayout()
@@ -181,14 +194,12 @@ private extension RegistrationViewController {
                 self?.registerButtonTaped()
             },
             for: .touchUpInside)
-        
     }
 }
 
 // MARK: - Setting View
 private extension RegistrationViewController {
     func addSubview() {
-        
         view.addSubview(formView)
         view.addSubview(separatorView)
         
@@ -268,8 +279,6 @@ private extension RegistrationViewController {
             make.height.equalTo(73)
         }
         
-        
-    
         registerButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(575)
             make.width.equalTo(338)
@@ -279,9 +288,7 @@ private extension RegistrationViewController {
     }
 }
 
-
 #Preview(traits: .defaultLayout, body: {
     let view = RegistrationViewController()
     return view
 })
-
