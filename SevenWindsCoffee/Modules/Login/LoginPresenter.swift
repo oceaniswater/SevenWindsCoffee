@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum ValidationError: Error {
+    case emptyFieldsError
+    case emailNotValidError
+}
+
 protocol LoginPresenterProtocol {
     var router: LoginRouterProtocol? {get set}
     var interactor: LoginInteractorPtotocol? {get set}
@@ -15,6 +20,8 @@ protocol LoginPresenterProtocol {
     func loginButtonTapped(login: String, password: String)
     func loginSuccess(token: String, tokenLifetime: TimeInterval)
     func loginError(message: String)
+    
+    func validateFields(email: String, password: String) -> Bool 
 }
 
 class LoginPresenter: LoginPresenterProtocol, LoginInteractorOutputProtocol {
@@ -35,5 +42,13 @@ class LoginPresenter: LoginPresenterProtocol, LoginInteractorOutputProtocol {
     
     func loginError(message: String) {
         view?.showLoginError(message: message)
+    }
+    
+    func validateFields(email: String, password: String) -> Bool {
+        guard !email.isEmpty, !password.isEmpty else {
+            view?.displayValidationError(.emptyFieldsError)
+            return false
+        }
+        return true
     }
 }

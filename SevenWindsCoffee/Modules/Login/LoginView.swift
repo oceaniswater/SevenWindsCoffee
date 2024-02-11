@@ -17,6 +17,7 @@ protocol LoginViewProtocol: AnyViewProtocol {
     var presenter: LoginPresenterProtocol? {get set}
     func showLoginSuccess()
     func showLoginError(message: String)
+    func displayValidationError(_ error: ValidationError)
 }
 
 class LoginViewController: TemplateViewController {
@@ -84,8 +85,6 @@ class LoginViewController: TemplateViewController {
         return view
     }()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -98,6 +97,41 @@ class LoginViewController: TemplateViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    func loggingButtonTaped() {
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text else { return }
+        if let valid = presenter?.validateFields(email: email, password: password), valid == true {
+            presenter?.loginButtonTapped(login: email, password: password)
+            view.endEditing(true)
+        }
+    }
+}
+
+// MARK: - LoginViewProtocol
+extension LoginViewController: LoginViewProtocol {
+    func showLoginSuccess() {
+    }
+    
+    func showLoginError(message: String) {
+        AlertPresenter.present(from: self, with: "Ошибка", message: message, action: UIAlertAction(title: "Ok", style: .default))
+    }
+    
+    func displayValidationError(_ error: ValidationError) {
+        switch error {
+        case .emptyFieldsError:
+            // Show error message for empty fields
+            AlertPresenter.present(from: self, with: "Ошибка", message: "Оба поля должны быть заполненны", action: UIAlertAction(title: "Ok", style: .default))
+            break
+        case .emailNotValidError:
+            // Show error message for invalid email
+            AlertPresenter.present(from: self, with: "Ошибка", message: "Некорректный email", action: UIAlertAction(title: "Ok", style: .default))
+            break
+        }
+    }
+}
+
+// MARK: - Observe keyboard
+private extension LoginViewController {
     private func startObservingKeyobard() {
         NotificationCenter.default.addObserver(
             self,
@@ -123,26 +157,6 @@ class LoginViewController: TemplateViewController {
         if view.frame.origin.y != 0 {
             view.frame.origin.y = 0
         }
-    }
-
-    
-    func loggingButtonTaped() {
-        guard let email = emailTextField.text,
-              let password = passwordTextField.text else { return }
-        guard !email.isEmpty, !password.isEmpty else {
-            AlertPresenter.present(from: self, with: "Ошибка", message: "Оба поля должны быть заполнены.", action: UIAlertAction(title: "Ok", style: .default))
-            return }
-        presenter?.loginButtonTapped(login: email, password: password)
-        view.endEditing(true)
-    }
-}
-
-extension LoginViewController: LoginViewProtocol {
-    func showLoginSuccess() {
-    }
-    
-    func showLoginError(message: String) {
-        AlertPresenter.present(from: self, with: "Ошибка", message: message, action: UIAlertAction(title: "Ok", style: .default))
     }
 }
 
