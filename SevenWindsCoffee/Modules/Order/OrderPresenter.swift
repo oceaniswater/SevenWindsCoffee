@@ -27,21 +27,20 @@ class OrderPresenter: OrderPresenterProtocol, OrderInteractorOutputProtocol {
     var interactor: OrderInteractorPtotocol?
     var view: OrderViewProtocol?
     
-    var items: OrderEntity = [OrderEntityElement(item: MenuItemsEntityElement(id: 1, name: "Americano", imageURL: "", price: 200), count: 1), OrderEntityElement(item: MenuItemsEntityElement(id: 1, name: "Americano", imageURL: "", price: 200), count: 1), OrderEntityElement(item: MenuItemsEntityElement(id: 1, name: "Americano", imageURL: "", price: 200), count: 1)]
+    var items: OrderEntity
     
-    init() {
-        fetchCoffeeShops()
+    init(items: OrderEntity) {
+        self.items = items
     }
     
-    
     func fetchCoffeeShops() {
-        guard let token = KeychainHelper.shared.getCredentials() else { return }
-        interactor?.fetchData(token: token)
+//        guard let token = KeychainHelper.shared.getCredentials() else { return }
+//        interactor?.fetchData(token: token)
     }
     
     func fetchSuccess(items: OrderEntity) {
-        self.items = items
-        view?.fetchShopSuccess()
+//        self.items = items
+//        view?.fetchShopSuccess()
     }
     
     func fetchError(message: String) {

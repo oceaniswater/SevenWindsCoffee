@@ -9,16 +9,13 @@ import UIKit
 import SnapKit
 import SDWebImage
 
-protocol MenuCollectionViewCellInput: AnyObject {
-    var title: String? { get set }
-    var subtitle: String? { get set }
-    var isCountable: Bool { get set }
-    var handler: ((UInt) -> Void)? { get set }
-    func startAnimating()
-    func stopAnimating()
+protocol MenuCellDelegate: AnyObject {
+    func didCountChanged(count: UInt, identifier: Int?)
 }
 
 class MenuItemCollectionViewCell: UICollectionViewCell {
+    
+    weak var delegate: MenuCellDelegate?
     
     public static var identifier: String {
         get {
@@ -69,6 +66,7 @@ class MenuItemCollectionViewCell: UICollectionViewCell {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.lineBreakMode = .byTruncatingTail
         label.textColor = K.Design.secondTextColor
         return label
     }()
@@ -89,8 +87,6 @@ class MenuItemCollectionViewCell: UICollectionViewCell {
     private var vStack: UIStackView!
     private var hStack: UIStackView!
     
-    private var countHandler: ((UInt) -> Void)?
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -109,15 +105,16 @@ class MenuItemCollectionViewCell: UICollectionViewCell {
     func configure(with item: MenuItemsEntityElement) {
         nameLabel.text = item.name
         priceLabel.text = "\(String(item.price)) руб"
+        stepper.setIdentifier(item.id)
         
-        startAnimating()
+        loaderView.startAnimating()
         
         // Use SDWebImage to load and cache the image
         productImageView.sd_setImage(with: URL(string: item.imageURL)) { [weak self] (image, error, _, _) in
             guard let self = self else { return }
             
             // Hide the loader once the image is loaded
-            self.stopAnimating()
+            loaderView.stopAnimating()
             
             // Handle errors or additional setup if needed
             if let error = error {
@@ -147,7 +144,8 @@ private extension MenuItemCollectionViewCell {
 
         hStack = UIStackView(arrangedSubviews: [priceLabel, stepper])
         hStack.axis = .horizontal
-        hStack.spacing = 25
+        hStack.spacing = 0
+        hStack.distribution = .fillEqually
         hStack.alignment = .leading
         
         vStack = UIStackView(arrangedSubviews: [nameLabel, hStack])
@@ -179,6 +177,7 @@ private extension MenuItemCollectionViewCell {
 
         vStack.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(-10)
             make.bottom.equalToSuperview().offset(-10)
         }
     }
@@ -186,48 +185,15 @@ private extension MenuItemCollectionViewCell {
 
 // MARK: - CounterDelegate
 extension MenuItemCollectionViewCell: CounterDelegate {
-    func didChanged(count: UInt) {
-        countHandler?(count)
-    }
-}
-
-extension MenuItemCollectionViewCell: MenuCollectionViewCellInput {
-    var title: String? {
-        get { nameLabel.text }
-        set { nameLabel.text = newValue }
-    }
-
-    var subtitle: String? {
-        get { priceLabel.text }
-        set { priceLabel.text = newValue }
-    }
-
-    var isCountable: Bool {
-        get { !stepper.isHidden }
-        set {
-            stepper.isHidden = !newValue
-            layoutIfNeeded()
-        }
-    }
-
-    var handler: ((UInt) -> Void)? {
-        get { countHandler }
-        set { countHandler = newValue }
-    }
-
-    func startAnimating() {
-        loaderView.startAnimating()
-    }
-
-    func stopAnimating() {
-        loaderView.stopAnimating()
+    func didChanged(count: UInt, identifier: Int?) {
+        delegate?.didCountChanged(count: count, identifier: identifier)
     }
 }
 
 
 #Preview(traits: .defaultLayout, body: {
     let view = MenuItemCollectionViewCell()
-    view.configure(with: MenuItemsEntityElement(id: 1, name: "Americano", imageURL: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Espresso_and_napolitains.jpg", price: 200))
+    view.configure(with: MenuItemsEntityElement(id: 1, name: "Americano Americano Americano", imageURL: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Espresso_and_napolitains.jpg", price: 200))
     return view
 })
 

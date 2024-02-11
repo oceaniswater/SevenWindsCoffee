@@ -88,6 +88,7 @@ class OrderTableViewCell: UITableViewCell {
     func configure(with item: OrderEntityElement) {
         nameLabel.text = item.item.name
         priceLabel.text = "\(String(item.item.price)) рублей"
+        stepper.setCounterValue(with: item.count)
     }
 }
 
@@ -145,6 +146,10 @@ private extension OrderTableViewCell {
 
 // MARK: - CounterDelegate
 extension OrderTableViewCell: CounterDelegate {
+    func didChanged(count: UInt, identifier: Int?) {
+        //
+    }
+    
     func didChanged(count: UInt) {
         countHandler?(count)
     }

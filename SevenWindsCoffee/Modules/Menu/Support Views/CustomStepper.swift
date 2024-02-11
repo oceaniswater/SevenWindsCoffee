@@ -3,7 +3,7 @@ import UIKit
 import SnapKit
 
 protocol CounterDelegate: AnyObject {
-    func didChanged(count: UInt)
+    func didChanged(count: UInt, identifier: Int?)
 }
 
 class Counter: UIView {
@@ -65,9 +65,12 @@ class Counter: UIView {
     
     private var style: Style
     
+    private var identifier: Int?
+    
     private var count: UInt = 0 {
         didSet {
             countLabel.text = "\(count)"
+            delegate?.didChanged(count: count, identifier: identifier)
         }
     }
     
@@ -84,10 +87,23 @@ class Counter: UIView {
         fatalError("Counter.init(coder:) has not been implemented")
     }
     
-    convenience init(with style: Style) {
+    convenience init(with style: Style, identifier: Int? = nil) {
         self.init(frame: .zero)
         self.style = style
+        self.identifier = identifier
         setupView()
+    }
+    
+    // MARK: - Public methods
+    
+    // Setter method for the identifier
+    func setIdentifier(_ identifier: Int?) {
+        self.identifier = identifier
+    }
+
+    // Getter method for the identifier
+    func getIdentifier() -> Int? {
+        return identifier
     }
 }
 
@@ -134,12 +150,12 @@ private extension Counter {
     @objc func minusButtonAction() {
         guard count > 0 else { return }
         count -= 1
-        delegate?.didChanged(count: count)
+        delegate?.didChanged(count: count, identifier: identifier)
     }
     
     @objc func plusButtonAction() {
         count += 1
-        delegate?.didChanged(count: count)
+        delegate?.didChanged(count: count, identifier: identifier)
     }
 }
 

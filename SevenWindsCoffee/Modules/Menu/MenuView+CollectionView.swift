@@ -44,6 +44,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuItemCollectionViewCell.identifier, for: indexPath) as! MenuItemCollectionViewCell
         if let item = presenter?.items[indexPath.row] {
+            cell.delegate = self
             cell.configure(with: item)
         }
         return cell
