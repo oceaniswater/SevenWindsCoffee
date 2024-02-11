@@ -35,10 +35,15 @@ class LoginInteractor: LoginInteractorPtotocol {
             switch result {
             case .success(let response):
                 // Handle success
-                let data = response.data
-                let decodedResponse = try? JSONDecoder().decode(LoginEntity.self, from: data)
-                guard let token = decodedResponse?.token else { return }
-                self?.presenter?.loginSuccess(token: token, tokenLifetime: decodedResponse?.tokenLifetime ?? TimeInterval(123))
+                if response.statusCode == 200 {
+                    let data = response.data
+                    let decodedResponse = try? JSONDecoder().decode(LoginEntity.self, from: data)
+                    guard let token = decodedResponse?.token else { return }
+                    self?.presenter?.loginSuccess(token: token, tokenLifetime: decodedResponse?.tokenLifetime ?? TimeInterval(123))
+                } else {
+                    self?.presenter?.loginError(message: response.description)
+                }
+
             case .failure(let error):
                 // Handle error
                 self?.presenter?.loginError(message: error.localizedDescription)

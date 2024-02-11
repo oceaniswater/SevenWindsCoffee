@@ -45,7 +45,7 @@ class MenuViewController: UIViewController {
         view.layer.borderWidth = 0.5
         return view
     }()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +74,7 @@ extension MenuViewController: MenuViewProtocol {
         //
     }
     
-
+    
 }
 
 // MARK: - Setup View
@@ -99,7 +99,7 @@ private extension MenuViewController {
         
         addSubview()
         setupLayout()
-
+        
         goToOrderButton.addAction(
             UIAction { [weak self] _ in
                 self?.goToOrderButtonTaped()
@@ -142,6 +142,29 @@ private extension MenuViewController {
             make.height.equalTo(48)
             make.centerX.equalToSuperview()
         }
+    }
+}
+
+extension MenuViewController: MenuCellDelegate {
+    func didCountChanged(count: UInt, identifier: Int?) {
+        // Handle the count change, along with the identifier
+        if let identifier = identifier {
+            // Create a new array with updated values
+            guard let orders = presenter?.orders as? OrderEntity else { return }
+            
+            let updatedOrders: OrderEntity = orders.map { order in
+                var updatedOrder = order
+                if order.item.id == identifier {
+                    updatedOrder.count = count
+                }
+                return updatedOrder
+            }
+            
+            // Update the original orders array
+            presenter?.orders = updatedOrders
+        }
+        
+        print(presenter?.orders)
     }
 }
 

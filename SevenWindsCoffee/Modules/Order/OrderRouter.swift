@@ -25,7 +25,7 @@ class OrderRouter: OrderRouterProtocol {
         
         let view: OrderViewProtocol = OrderViewController()
         var interactor: OrderInteractorPtotocol = OrderInteractor()
-        var presenter: OrderPresenterProtocol = OrderPresenter()
+        var presenter: OrderPresenterProtocol = OrderPresenter(items: items)
         
         view.presenter = presenter
         interactor.presenter = presenter

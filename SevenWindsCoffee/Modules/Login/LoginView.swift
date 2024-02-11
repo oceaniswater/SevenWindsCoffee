@@ -146,7 +146,7 @@ extension LoginViewController: LoginViewProtocol {
     }
     
     func showLoginError(message: String) {
-        print(message)
+        AlertPresenter.present(from: self, with: "Ошибка", message: message, action: UIAlertAction(title: "Ok", style: .default))
     }
 }
 

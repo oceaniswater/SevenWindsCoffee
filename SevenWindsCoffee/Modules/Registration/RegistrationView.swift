@@ -21,10 +21,10 @@ class RegistrationViewController: UIViewController {
     
     var emailLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15.0)
+        label.font = UIFont(name: "SFUIDisplay-Regular", size: 15)
         label.textAlignment = .left
         label.text = "e-mail"
-        label.tintColor = K.Design.primaryTextColor
+        label.textColor = K.Design.primaryTextColor
         return label
     }()
     
@@ -37,10 +37,10 @@ class RegistrationViewController: UIViewController {
     
     var passwordLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15.0)
+        label.font = UIFont(name: "SFUIDisplay-Regular", size: 15)
         label.textAlignment = .left
         label.text = "Пароль"
-        label.tintColor = K.Design.primaryTextColor
+        label.textColor = K.Design.primaryTextColor
         return label
     }()
     
@@ -53,10 +53,10 @@ class RegistrationViewController: UIViewController {
     
     var passwordRepeatLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15.0)
+        label.font = UIFont(name: "SFUIDisplay-Regular", size: 15)
         label.textAlignment = .left
         label.text = "Повторите пароль"
-        label.tintColor = K.Design.primaryTextColor
+        label.textColor = K.Design.primaryTextColor
         return label
     }()
     
@@ -70,6 +70,7 @@ class RegistrationViewController: UIViewController {
     var registerButton: UIButton = {
         let button = UIButton()
         button.setTitle("Регистрация", for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFUIDisplay-Regular", size: 18)
         button.tintColor = K.Design.buttonTextColor
         button.backgroundColor = K.Design.buttonColor
         button.layer.borderColor = K.Design.buttonBorderColor?.cgColor
@@ -159,7 +160,7 @@ extension RegistrationViewController: RegistrationViewProtocol {
     }
     
     func showLoginError(message: String) {
-        print(message)
+        AlertPresenter.present(from: self, with: "Ошибка", message: message, action: UIAlertAction(title: "Ok", style: .default))
     }
 }
 

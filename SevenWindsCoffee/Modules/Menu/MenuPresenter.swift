@@ -20,6 +20,7 @@ protocol MenuPresenterProtocol {
     
     var id: Int {get set}
     var items: MenuItemsEntity { get set }
+    var orders: OrderEntity { get set }
     func numberOfSection() -> Int
     func numberOfItemsInSection(in section: Int) -> Int
 }
@@ -32,6 +33,7 @@ class MenuPresenter: MenuPresenterProtocol, MenuInteractorOutputProtocol {
     
     var id: Int
     var items: MenuItemsEntity = []
+    var orders: OrderEntity = []
     
     init(router: MenuRouterProtocol? = nil, interactor: MenuInteractorPtotocol? = nil, view: MenuViewProtocol? = nil, id: Int, items: MenuItemsEntity = []) {
         self.router = router
@@ -49,6 +51,7 @@ class MenuPresenter: MenuPresenterProtocol, MenuInteractorOutputProtocol {
     func fetchSuccess(items: MenuItemsEntity) {
         self.items = items
         view?.fetchMenuSuccess()
+        createOrder()
     }
     
     func fetchError(message: String) {
@@ -64,8 +67,15 @@ class MenuPresenter: MenuPresenterProtocol, MenuInteractorOutputProtocol {
     }
     
     func tapOnGoToOrderButton() {
-        router?.navigateToOrder(with: [])
+        let filtredOrders = orders.filter({$0.count > 0})
+        router?.navigateToOrder(with: filtredOrders)
+    }
+    
+    func createOrder() {
+        for menuItem in items {
+            // Assuming count is initially set to 0 for each item
+            let orderElement = OrderEntityElement(item: menuItem, count: 0)
+            orders.append(orderElement)
+        }
     }
 }
-
-

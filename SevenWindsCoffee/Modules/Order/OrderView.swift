@@ -42,6 +42,17 @@ class OrderViewController: UIViewController {
         view.layer.borderWidth = 0.5
         return view
     }()
+    
+    let textLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Время ожидания заказа\n15 минут!\nСпасибо, что выбрали нас!"
+        label.textColor = K.Design.primaryTextColor
+        label.font = UIFont(name: "SFUIDisplay-Medium", size: 24)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
 
     
     override func viewDidLoad() {
@@ -121,6 +132,7 @@ private extension OrderViewController {
         view.addSubview(tableView)
         view.addSubview(separatorView)
         view.addSubview(orderButton)
+        view.addSubview(textLabel)
     }
 }
 
@@ -139,6 +151,12 @@ private extension OrderViewController {
             make.height.equalTo(2)
             make.width.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        textLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(486)
+            make.height.equalTo(87)
         }
         
         orderButton.snp.makeConstraints { make in

@@ -52,7 +52,7 @@ final class AuthTextField: UITextField {
         backgroundColor = .white
         
         attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: K.Design.secondTextColor ?? .systemGray])
-        font = .systemFont(ofSize: 15)
+        font = UIFont(name: "SFUIDisplay-Regular", size: 18)
         
         // Create an SF Symbol configuration
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 14.0, weight: .light)
