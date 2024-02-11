@@ -11,7 +11,9 @@ class TemplateViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = K.Design.secondBackroundColor
+        
         navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
         

@@ -26,15 +26,15 @@ class MenuViewController: TemplateViewController {
         layout.minimumInteritemSpacing = 0.0
         layout.minimumLineSpacing = 0.0
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.backgroundColor = .clear
+        collection.backgroundColor = K.Design.secondBackroundColor
         return collection
     }()
     
     var goToOrderButton: UIButton = {
         let button = UIButton()
         button.setTitle("Перейти к оплате", for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = .black
+        button.tintColor = K.Design.buttonTextColor
+        button.backgroundColor = K.Design.buttonColor
         button.layer.cornerRadius = 25
         return button
     }()
@@ -98,7 +98,6 @@ private extension MenuViewController {
 // MARK: - Setting View
 private extension MenuViewController {
     func addSubview() {
-        view.backgroundColor = K.Design.secondBackroundColor
         view.addSubview(menuCollection)
         view.addSubview(separatorView)
         view.addSubview(goToOrderButton)
@@ -133,9 +132,7 @@ private extension MenuViewController {
 
 extension MenuViewController: MenuCellDelegate {
     func didCountChanged(count: UInt, identifier: Int?) {
-        // Handle the count change, along with the identifier
         if let identifier = identifier {
-            // Create a new array with updated values
             guard let orders = presenter?.orders as? OrderEntity else { return }
             
             let updatedOrders: OrderEntity = orders.map { order in
@@ -145,12 +142,8 @@ extension MenuViewController: MenuCellDelegate {
                 }
                 return updatedOrder
             }
-            
-            // Update the original orders array
             presenter?.orders = updatedOrders
         }
-        
-        print(presenter?.orders)
     }
 }
 

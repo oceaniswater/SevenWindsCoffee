@@ -29,8 +29,10 @@ class OrderViewController: TemplateViewController {
     var orderButton: UIButton = {
         let button = UIButton()
         button.setTitle("Оплатить", for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = .black
+        button.tintColor = K.Design.buttonTextColor
+        button.backgroundColor = K.Design.buttonColor
+        button.layer.borderColor = K.Design.buttonBorderColor?.cgColor
+        button.layer.borderWidth = 1
         button.layer.cornerRadius = 25
         return button
     }()
@@ -85,7 +87,7 @@ extension OrderViewController: OrderViewProtocol {
     }
     
     func showFetchError(message: String) {
-        print(message)
+        // show error
     }
 }
 
@@ -109,7 +111,6 @@ private extension OrderViewController {
 // MARK: - Setting View
 private extension OrderViewController {
     func addSubview() {
-        view.backgroundColor = K.Design.secondBackroundColor
         view.addSubview(tableView)
         view.addSubview(separatorView)
         view.addSubview(orderButton)

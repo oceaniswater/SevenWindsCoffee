@@ -173,13 +173,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		865A7CC72B764A4B0002B765 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		865A7CCA2B765C710002B765 /* Order */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				8642B9532B77A3FF00BC74B3 /* Utils */,
-				865A7CC72B764A4B0002B765 /* Extensions */,
 				86D637F32B73F072008550D3 /* Helpers */,
 				86D637E22B73B83D008550D3 /* Network */,
 				865A7CD92B7694550002B765 /* Modules */,

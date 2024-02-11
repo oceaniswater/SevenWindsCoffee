@@ -25,10 +25,10 @@ class LoginViewController: TemplateViewController {
     
     var emailLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15.0)
+        label.font = UIFont(name: "SFUIDisplay-Regular", size: 15.0)
         label.textAlignment = .left
         label.text = "e-mail"
-        label.tintColor = K.Design.primaryTextColor
+        label.textColor = K.Design.primaryTextColor
         return label
     }()
     
@@ -41,10 +41,10 @@ class LoginViewController: TemplateViewController {
     
     var passwordLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15.0)
+        label.font = UIFont(name: "SFUIDisplay-Regular", size: 15.0)
         label.textAlignment = .left
         label.text = "Пароль"
-        label.tintColor = K.Design.primaryTextColor
+        label.textColor = K.Design.primaryTextColor
         return label
     }()
     

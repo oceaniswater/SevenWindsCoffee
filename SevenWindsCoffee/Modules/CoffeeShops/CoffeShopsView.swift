@@ -29,8 +29,10 @@ class CoffeeShopsViewController: TemplateViewController {
     var onMapButton: UIButton = {
         let button = UIButton()
         button.setTitle("На карте", for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = .black
+        button.tintColor = K.Design.buttonTextColor
+        button.backgroundColor = K.Design.buttonColor
+        button.layer.borderColor = K.Design.buttonBorderColor?.cgColor
+        button.layer.borderWidth = 1
         button.layer.cornerRadius = 25
         return button
     }()
@@ -100,7 +102,6 @@ private extension CoffeeShopsViewController {
 // MARK: - Setting View
 private extension CoffeeShopsViewController {
     func addSubview() {
-        view.backgroundColor = K.Design.secondBackroundColor
         view.addSubview(tableView)
         view.addSubview(separatorView)
         view.addSubview(onMapButton)

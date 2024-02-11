@@ -15,7 +15,7 @@ protocol RegistrationViewProtocol: AnyViewProtocol {
     func showLoginError(message: String)
 }
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: TemplateViewController {
     
     var presenter: RegistrationPresenterProtocol?
     
@@ -167,11 +167,7 @@ extension RegistrationViewController: RegistrationViewProtocol {
 // MARK: - Setup View
 private extension RegistrationViewController {
     func setupView() {
-        view.backgroundColor = K.Design.secondBackroundColor
-        
         navigationItem.title = "Регистрация"
-        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
         
         addSubview()
         setupLayout()
