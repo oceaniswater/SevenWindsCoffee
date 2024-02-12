@@ -62,7 +62,7 @@ class RegistrationViewController: TemplateViewController {
     
     var passwordRepeatTextField: UITextField = {
         let textField = AuthTextField(symbol: nil, placeholder: "******")
-        textField.tag = 1
+        textField.tag = 2
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -103,6 +103,8 @@ class RegistrationViewController: TemplateViewController {
         
         setupView()
         startObservingKeyobard()
+        setupUITextFieldDelegate()
+        setupGestureEndEditing()
     }
     
     deinit {

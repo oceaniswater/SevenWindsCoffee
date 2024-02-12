@@ -88,6 +88,8 @@ class LoginViewController: TemplateViewController {
         
         setupView()
         startObservingKeyobard()
+        setupUITextFieldDelegate()
+        setupGestureEndEditing()
     }
     
     deinit {
@@ -95,7 +97,7 @@ class LoginViewController: TemplateViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func loggingButtonTaped() {
+    func loginButtonTaped() {
         guard let email = emailTextField.text,
               let password = passwordTextField.text else { return }
         if let valid = presenter?.validateFields(email: email, password: password), valid == true {
@@ -173,7 +175,7 @@ private extension LoginViewController {
         
         logInButton.addAction(
             UIAction { [weak self] _ in
-                self?.loggingButtonTaped()
+                self?.loginButtonTaped()
             },
             for: .touchUpInside)
     }
