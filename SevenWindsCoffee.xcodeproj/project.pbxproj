@@ -92,7 +92,6 @@
 		865A7CE32B76954B0002B765 /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
 		8662B3BB2B7A46ED007D6A41 /* RegistrationView+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationView+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		8662B3BD2B7A502C007D6A41 /* LoginView+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
-		8662B3BF2B7A510E007D6A41 /* SevenWindsCoffee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SevenWindsCoffee.entitlements; sourceTree = "<group>"; };
 		868A28522B77909300FCFD2D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		868A28542B7790A400FCFD2D /* MapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInteractor.swift; sourceTree = "<group>"; };
 		868A28562B7790B600FCFD2D /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
@@ -234,6 +233,16 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		8662B3C12B7A5467007D6A41 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				86D637C92B73AB19008550D3 /* Assets.xcassets */,
+				86D637CB2B73AB19008550D3 /* LaunchScreen.storyboard */,
+				86D637CE2B73AB19008550D3 /* Info.plist */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
 		868A28512B77906300FCFD2D /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,11 +289,8 @@
 				86D637F32B73F072008550D3 /* Helpers */,
 				86D637E22B73B83D008550D3 /* Network */,
 				865A7CD92B7694550002B765 /* Modules */,
+				8662B3C12B7A5467007D6A41 /* Resourses */,
 				86990D8C2B7992CF0094ACDC /* Media */,
-				86D637C92B73AB19008550D3 /* Assets.xcassets */,
-				86D637CB2B73AB19008550D3 /* LaunchScreen.storyboard */,
-				8662B3BF2B7A510E007D6A41 /* SevenWindsCoffee.entitlements */,
-				86D637CE2B73AB19008550D3 /* Info.plist */,
 			);
 			path = SevenWindsCoffee;
 			sourceTree = "<group>";
@@ -693,13 +699,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = SevenWindsCoffee/SevenWindsCoffee.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 922R4697G4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SevenWindsCoffee/Info.plist;
+				INFOPLIST_FILE = SevenWindsCoffee/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -723,13 +729,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = SevenWindsCoffee/SevenWindsCoffee.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 922R4697G4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SevenWindsCoffee/Info.plist;
+				INFOPLIST_FILE = SevenWindsCoffee/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
