@@ -225,6 +225,15 @@
 			path = Registration;
 			sourceTree = "<group>";
 		};
+		8662B3C02B7A5364007D6A41 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				86D637C22B73AB18008550D3 /* SceneDelegate.swift */,
+				86D637C02B73AB18008550D3 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		868A28512B77906300FCFD2D /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,16 +275,15 @@
 		86D637BF2B73AB18008550D3 /* SevenWindsCoffee */ = {
 			isa = PBXGroup;
 			children = (
-				8662B3BF2B7A510E007D6A41 /* SevenWindsCoffee.entitlements */,
-				86990D8C2B7992CF0094ACDC /* Media */,
+				8662B3C02B7A5364007D6A41 /* App */,
 				8642B9532B77A3FF00BC74B3 /* Utils */,
 				86D637F32B73F072008550D3 /* Helpers */,
 				86D637E22B73B83D008550D3 /* Network */,
 				865A7CD92B7694550002B765 /* Modules */,
-				86D637C02B73AB18008550D3 /* AppDelegate.swift */,
-				86D637C22B73AB18008550D3 /* SceneDelegate.swift */,
+				86990D8C2B7992CF0094ACDC /* Media */,
 				86D637C92B73AB19008550D3 /* Assets.xcassets */,
 				86D637CB2B73AB19008550D3 /* LaunchScreen.storyboard */,
+				8662B3BF2B7A510E007D6A41 /* SevenWindsCoffee.entitlements */,
 				86D637CE2B73AB19008550D3 /* Info.plist */,
 			);
 			path = SevenWindsCoffee;
