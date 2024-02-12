@@ -14,8 +14,16 @@ class TemplateViewController: UIViewController {
         
         view.backgroundColor = K.Design.secondBackroundColor
         
-        navigationController?.navigationBar.backgroundColor = K.Design.secondBackroundColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: K.Design.primaryTextColor ?? .black]
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = K.Design.secondBackroundColor
+        appearance.titleTextAttributes = [.foregroundColor:  K.Design.primaryTextColor ?? .brown]
+        appearance.largeTitleTextAttributes = [.foregroundColor:  K.Design.primaryTextColor ?? .brown]
+        
+        navigationController?.navigationBar.tintColor = K.Design.primaryTextColor
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
         
         let backButton = UIButton(type: .custom)
         backButton.tintColor = K.Design.primaryTextColor
