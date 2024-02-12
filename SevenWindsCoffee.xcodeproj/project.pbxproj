@@ -25,6 +25,8 @@
 		865A7CE02B76950E0002B765 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CDF2B76950E0002B765 /* RegistrationPresenter.swift */; };
 		865A7CE22B7695210002B765 /* RegistrationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CE12B7695210002B765 /* RegistrationEntity.swift */; };
 		865A7CE42B76954B0002B765 /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865A7CE32B76954B0002B765 /* RegistrationRouter.swift */; };
+		8662B3BC2B7A46ED007D6A41 /* RegistrationView+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8662B3BB2B7A46ED007D6A41 /* RegistrationView+UITextFieldDelegate.swift */; };
+		8662B3BE2B7A502C007D6A41 /* LoginView+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8662B3BD2B7A502C007D6A41 /* LoginView+UITextFieldDelegate.swift */; };
 		868A28532B77909300FCFD2D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A28522B77909300FCFD2D /* MapView.swift */; };
 		868A28552B7790A400FCFD2D /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A28542B7790A400FCFD2D /* MapInteractor.swift */; };
 		868A28572B7790B600FCFD2D /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868A28562B7790B600FCFD2D /* MapPresenter.swift */; };
@@ -88,6 +90,9 @@
 		865A7CDF2B76950E0002B765 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		865A7CE12B7695210002B765 /* RegistrationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEntity.swift; sourceTree = "<group>"; };
 		865A7CE32B76954B0002B765 /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
+		8662B3BB2B7A46ED007D6A41 /* RegistrationView+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationView+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		8662B3BD2B7A502C007D6A41 /* LoginView+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		8662B3BF2B7A510E007D6A41 /* SevenWindsCoffee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SevenWindsCoffee.entitlements; sourceTree = "<group>"; };
 		868A28522B77909300FCFD2D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		868A28542B7790A400FCFD2D /* MapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInteractor.swift; sourceTree = "<group>"; };
 		868A28562B7790B600FCFD2D /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
@@ -215,6 +220,7 @@
 				865A7CDF2B76950E0002B765 /* RegistrationPresenter.swift */,
 				865A7CE12B7695210002B765 /* RegistrationEntity.swift */,
 				865A7CE32B76954B0002B765 /* RegistrationRouter.swift */,
+				8662B3BB2B7A46ED007D6A41 /* RegistrationView+UITextFieldDelegate.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 		86D637BF2B73AB18008550D3 /* SevenWindsCoffee */ = {
 			isa = PBXGroup;
 			children = (
+				8662B3BF2B7A510E007D6A41 /* SevenWindsCoffee.entitlements */,
 				86990D8C2B7992CF0094ACDC /* Media */,
 				8642B9532B77A3FF00BC74B3 /* Utils */,
 				86D637F32B73F072008550D3 /* Helpers */,
@@ -283,6 +290,7 @@
 				86D637D72B73B45F008550D3 /* LoginPresenter.swift */,
 				86D637EE2B73BB10008550D3 /* LoginEntity.swift */,
 				86D637DB2B73B4D0008550D3 /* LoginRouter.swift */,
+				8662B3BD2B7A502C007D6A41 /* LoginView+UITextFieldDelegate.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -497,6 +505,7 @@
 				86990D8B2B796D8D0094ACDC /* ValidationError.swift in Sources */,
 				8642B9592B77C48600BC74B3 /* Placemark.swift in Sources */,
 				86D6381A2B750E37008550D3 /* MenuItemCollectionViewCell.swift in Sources */,
+				8662B3BC2B7A46ED007D6A41 /* RegistrationView+UITextFieldDelegate.swift in Sources */,
 				86D6381D2B751C9C008550D3 /* CustomStepper.swift in Sources */,
 				865A7CD42B765CD00002B765 /* OrderRouter.swift in Sources */,
 				86D637C12B73AB18008550D3 /* AppDelegate.swift in Sources */,
@@ -513,6 +522,7 @@
 				8642B9552B77A4C000BC74B3 /* ApiKeyStorage.swift in Sources */,
 				865A7CCE2B765C940002B765 /* OrderInteractor.swift in Sources */,
 				865A7CDE2B7694EC0002B765 /* RegistrationInteractor.swift in Sources */,
+				8662B3BE2B7A502C007D6A41 /* LoginView+UITextFieldDelegate.swift in Sources */,
 				868A28592B7790CC00FCFD2D /* MapEntity.swift in Sources */,
 				86D638032B740413008550D3 /* CoffeeShopsRouter.swift in Sources */,
 				86990D892B794E9B0094ACDC /* NetworkManager.swift in Sources */,
@@ -675,6 +685,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SevenWindsCoffee/SevenWindsCoffee.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 922R4697G4;
@@ -704,6 +715,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SevenWindsCoffee/SevenWindsCoffee.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 922R4697G4;
