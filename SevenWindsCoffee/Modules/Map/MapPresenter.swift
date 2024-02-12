@@ -30,10 +30,6 @@ class MapPresenter: MapPresenterProtocol, MapInteractorOutputProtocol {
     
     var shops: CoffeeShopsEntity = []
     
-    init() {
-        fetchCoffeeShops()
-    }
-    
     func fetchCoffeeShops() {
         guard let token = KeychainHelper.shared.getCredentials() else { return }
         interactor?.fetchData(token: token)
