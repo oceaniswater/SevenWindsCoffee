@@ -73,7 +73,5 @@ final class AuthTextField: UITextField {
         leftView = symbolImageView
         leftViewMode = .always
         tintColor = .black
-        
     }
-    
 }

@@ -68,7 +68,7 @@ private extension TemplateViewController {
 // MARK: - Setting
 private extension TemplateViewController {
     func addSubview() {
-        view.addSubview(separatorView)
+        navigationController?.navigationBar.addSubview(separatorView)
     }
 }
 
@@ -78,7 +78,7 @@ private extension TemplateViewController {
         separatorView.snp.makeConstraints { make in
             make.height.equalTo(2)
             make.width.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(navigationController?.navigationBar.snp.bottom ?? view.safeAreaLayoutGuide)
         }
     }
 }
