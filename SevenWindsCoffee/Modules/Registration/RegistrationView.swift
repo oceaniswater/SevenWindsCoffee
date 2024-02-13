@@ -133,14 +133,14 @@ extension RegistrationViewController {
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        if formView.frame.origin.y == 0 {
-            formView.frame.origin.y -= 90
+        if view.frame.origin.y == 0 {
+            view.frame.origin.y -= 90
         }
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
-        if formView.frame.origin.y != 0 {
-            formView.frame.origin.y = 0
+        if view.frame.origin.y != 0 {
+            view.frame.origin.y = 0
         }
     }
 }
@@ -229,8 +229,7 @@ private extension RegistrationViewController {
     func setupLayout() {
         
         formView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         emailTextField.snp.makeConstraints { make in

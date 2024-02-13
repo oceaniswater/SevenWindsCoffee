@@ -145,7 +145,7 @@ private extension MapViewController {
     func setupLayout() {
         mapView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(separatorView.snp.bottom)
+            make.top.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }

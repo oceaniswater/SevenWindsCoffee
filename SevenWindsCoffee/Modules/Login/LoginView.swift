@@ -145,14 +145,14 @@ private extension LoginViewController {
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        if formView.frame.origin.y == 0 {
-            formView.frame.origin.y -= 40
+        if view.frame.origin.y == 0 {
+            view.frame.origin.y -= 40
         }
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
-        if formView.frame.origin.y != 0 {
-            formView.frame.origin.y = 0
+        if view.frame.origin.y != 0 {
+            view.frame.origin.y = 0
         }
     }
 }
