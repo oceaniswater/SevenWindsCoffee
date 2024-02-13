@@ -40,14 +40,6 @@ class MenuViewController: TemplateViewController {
         return button
     }()
     
-    let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = K.Design.secondBackroundColor
-        view.layer.borderColor = K.Design.separatorLineColor?.cgColor
-        view.layer.borderWidth = 0.5
-        return view
-    }()
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,7 +115,6 @@ extension MenuViewController: MenuCellDelegate {
 private extension MenuViewController {
     func addSubview() {
         view.addSubview(menuCollection)
-        view.addSubview(separatorView)
         view.addSubview(goToOrderButton)
     }
 }
@@ -137,12 +128,6 @@ private extension MenuViewController {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalTo(goToOrderButton.snp.top)
-        }
-        
-        separatorView.snp.makeConstraints { make in
-            make.height.equalTo(2)
-            make.width.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide)
         }
         
         goToOrderButton.snp.makeConstraints { make in

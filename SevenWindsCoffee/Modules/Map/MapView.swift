@@ -73,14 +73,6 @@ class MapViewController: TemplateViewController {
     private var mapView: YMKMapView!
     private var map: YMKMap!
     
-    private let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = K.Design.secondBackroundColor
-        view.layer.borderColor = K.Design.separatorLineColor?.cgColor
-        view.layer.borderWidth = 0.5
-        return view
-    }()
-    
     /// Handles map object taps
     private lazy var mapObjectTapListener: YMKMapObjectTapListener = MapObjectTapListener(controller: self)
     
@@ -145,7 +137,6 @@ private extension MapViewController {
     func addSubview() {
         mapView = YMKMapView(frame: view.frame)
         view.addSubview(mapView)
-        view.addSubview(separatorView)
     }
 }
 
@@ -154,13 +145,7 @@ private extension MapViewController {
     func setupLayout() {
         mapView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide)
-        }
-        
-        separatorView.snp.makeConstraints { make in
-            make.height.equalTo(2)
-            make.width.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(separatorView.snp.bottom)
         }
     }
 }

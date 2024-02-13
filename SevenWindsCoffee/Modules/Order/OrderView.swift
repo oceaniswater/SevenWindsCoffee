@@ -38,14 +38,6 @@ class OrderViewController: TemplateViewController {
         return button
     }()
     
-    let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = K.Design.secondBackroundColor
-        view.layer.borderColor = K.Design.separatorLineColor?.cgColor
-        view.layer.borderWidth = 0.5
-        return view
-    }()
-    
     let textLabel: UILabel = {
         let label = UILabel()
         label.text = "Время ожидания заказа\n15 минут!\nСпасибо, что выбрали нас!"
@@ -119,7 +111,6 @@ private extension OrderViewController {
 private extension OrderViewController {
     func addSubview() {
         view.addSubview(tableView)
-        view.addSubview(separatorView)
         view.addSubview(orderButton)
         view.addSubview(textLabel)
     }
@@ -133,12 +124,6 @@ private extension OrderViewController {
             make.leading.equalToSuperview().offset(10)
             make.trailing.equalToSuperview().offset(-10)
             make.bottom.equalToSuperview()
-        }
-        
-        separatorView.snp.makeConstraints { make in
-            make.height.equalTo(2)
-            make.width.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide)
         }
         
         textLabel.snp.makeConstraints { make in
