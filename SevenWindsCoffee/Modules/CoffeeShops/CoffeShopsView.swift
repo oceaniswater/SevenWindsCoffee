@@ -38,14 +38,6 @@ class CoffeeShopsViewController: TemplateViewController {
         return button
     }()
     
-    let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = K.Design.secondBackroundColor
-        view.layer.borderColor = K.Design.separatorLineColor?.cgColor
-        view.layer.borderWidth = 0.5
-        return view
-    }()
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,7 +101,6 @@ private extension CoffeeShopsViewController {
 private extension CoffeeShopsViewController {
     func addSubview() {
         view.addSubview(tableView)
-        view.addSubview(separatorView)
         view.addSubview(onMapButton)
     }
 }
@@ -122,12 +113,6 @@ private extension CoffeeShopsViewController {
             make.leading.equalToSuperview().offset(10)
             make.trailing.equalToSuperview().offset(-10)
             make.bottom.equalToSuperview()
-        }
-        
-        separatorView.snp.makeConstraints { make in
-            make.height.equalTo(2)
-            make.width.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide)
         }
         
         onMapButton.snp.makeConstraints { make in

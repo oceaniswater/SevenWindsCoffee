@@ -89,14 +89,6 @@ class RegistrationViewController: TemplateViewController {
         return view
     }()
     
-    let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = K.Design.secondBackroundColor
-        view.layer.borderColor = K.Design.separatorLineColor?.cgColor
-        view.layer.borderWidth = 0.5
-        return view
-    }()
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,14 +133,14 @@ extension RegistrationViewController {
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        if view.frame.origin.y == 0 {
-            view.frame.origin.y -= 90
+        if formView.frame.origin.y == 0 {
+            formView.frame.origin.y -= 90
         }
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
-        if view.frame.origin.y != 0 {
-            view.frame.origin.y = 0
+        if formView.frame.origin.y != 0 {
+            formView.frame.origin.y = 0
         }
     }
 }
@@ -203,7 +195,6 @@ private extension RegistrationViewController {
 private extension RegistrationViewController {
     func addSubview() {
         view.addSubview(formView)
-        view.addSubview(separatorView)
         
         emailStack = UIStackView(arrangedSubviews: [emailLabel, emailTextField])
         emailStack.axis = .vertical
@@ -211,7 +202,7 @@ private extension RegistrationViewController {
         emailStack.alignment = .leading
         emailStack.distribution = .fillProportionally
         
-        view.addSubview(emailStack)
+        formView.addSubview(emailStack)
         
         passwordStack = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField])
         passwordStack.axis = .vertical
@@ -219,7 +210,7 @@ private extension RegistrationViewController {
         passwordStack.alignment = .leading
         passwordStack.distribution = .fillProportionally
         
-        view.addSubview(passwordStack)
+        formView.addSubview(passwordStack)
         
         passwordRepeatStack = UIStackView(arrangedSubviews: [passwordRepeatLabel, passwordRepeatTextField])
         passwordRepeatStack.axis = .vertical
@@ -227,9 +218,9 @@ private extension RegistrationViewController {
         passwordRepeatStack.alignment = .leading
         passwordRepeatStack.distribution = .fillProportionally
         
-        view.addSubview(passwordRepeatStack)
+        formView.addSubview(passwordRepeatStack)
         
-        view.addSubview(registerButton)
+        formView.addSubview(registerButton)
     }
 }
 
@@ -238,14 +229,8 @@ private extension RegistrationViewController {
     func setupLayout() {
         
         formView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.top.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
-        }
-        
-        separatorView.snp.makeConstraints { make in
-            make.height.equalTo(2)
-            make.width.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide)
         }
         
         emailTextField.snp.makeConstraints { make in

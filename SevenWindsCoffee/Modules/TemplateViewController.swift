@@ -6,11 +6,32 @@
 //
 
 import UIKit
+import SnapKit
 
 class TemplateViewController: UIViewController {
     
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = K.Design.secondBackroundColor
+        view.layer.borderColor = K.Design.separatorLineColor?.cgColor
+        view.layer.borderWidth = 0.5
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupView()
+    }
+    
+    func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - Setup View
+private extension TemplateViewController {
+    func setupView() {
         
         view.backgroundColor = K.Design.secondBackroundColor
         
@@ -37,9 +58,27 @@ class TemplateViewController: UIViewController {
         let backBarButtonItem = UIBarButtonItem(customView: backButton)
         
         navigationItem.leftBarButtonItem = backBarButtonItem
+        
+        addSubview()
+        setupLayout()
+        
     }
-    
-    func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
+}
+
+// MARK: - Setting
+private extension TemplateViewController {
+    func addSubview() {
+        view.addSubview(separatorView)
+    }
+}
+
+// MARK: - Setup Layout
+private extension TemplateViewController {
+    func setupLayout() {
+        separatorView.snp.makeConstraints { make in
+            make.height.equalTo(2)
+            make.width.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 }

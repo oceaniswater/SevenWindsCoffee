@@ -74,14 +74,6 @@ class LoginViewController: TemplateViewController {
         return view
     }()
     
-    let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = K.Design.secondBackroundColor
-        view.layer.borderColor = K.Design.separatorLineColor?.cgColor
-        view.layer.borderWidth = 0.5
-        return view
-    }()
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,14 +145,14 @@ private extension LoginViewController {
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        if view.frame.origin.y == 0 {
-            view.frame.origin.y -= 40
+        if formView.frame.origin.y == 0 {
+            formView.frame.origin.y -= 40
         }
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
-        if view.frame.origin.y != 0 {
-            view.frame.origin.y = 0
+        if formView.frame.origin.y != 0 {
+            formView.frame.origin.y = 0
         }
     }
 }
@@ -185,7 +177,6 @@ private extension LoginViewController {
 private extension LoginViewController {
     func addSubview() {
         view.addSubview(formView)
-        view.addSubview(separatorView)
         
         emailStack = UIStackView(arrangedSubviews: [emailLabel, emailTextField])
         emailStack.axis = .vertical
@@ -193,7 +184,7 @@ private extension LoginViewController {
         emailStack.alignment = .leading
         emailStack.distribution = .fillProportionally
         
-        view.addSubview(emailStack)
+        formView.addSubview(emailStack)
         
         passwordStack = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField])
         passwordStack.axis = .vertical
@@ -201,9 +192,9 @@ private extension LoginViewController {
         passwordStack.alignment = .leading
         passwordStack.distribution = .fillProportionally
         
-        view.addSubview(passwordStack)
+        formView.addSubview(passwordStack)
         
-        view.addSubview(logInButton)
+        formView.addSubview(logInButton)
     }
 }
 
@@ -212,14 +203,8 @@ private extension LoginViewController {
     func setupLayout() {
         
         formView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.top.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
-        }
-        
-        separatorView.snp.makeConstraints { make in
-            make.height.equalTo(2)
-            make.width.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide)
         }
         
         emailTextField.snp.makeConstraints { make in
