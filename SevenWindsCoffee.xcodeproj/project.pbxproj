@@ -101,6 +101,7 @@
 		86990D882B794E9B0094ACDC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		86990D8A2B796D8D0094ACDC /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		86990D8D2B7993590094ACDC /* Simulator Screen Recording - iPhone 15 Pro - 2024-02-11 at 23.41.26.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Simulator Screen Recording - iPhone 15 Pro - 2024-02-11 at 23.41.26.gif"; sourceTree = "<group>"; };
+		86D3847C2B7E3C13007E48CC /* screencast.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = screencast.mp4; sourceTree = "<group>"; };
 		86D637BD2B73AB18008550D3 /* SevenWindsCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SevenWindsCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D637C02B73AB18008550D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86D637C22B73AB18008550D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -258,6 +259,7 @@
 		86990D8C2B7992CF0094ACDC /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				86D3847C2B7E3C13007E48CC /* screencast.mp4 */,
 				86990D8D2B7993590094ACDC /* Simulator Screen Recording - iPhone 15 Pro - 2024-02-11 at 23.41.26.gif */,
 			);
 			path = Media;
