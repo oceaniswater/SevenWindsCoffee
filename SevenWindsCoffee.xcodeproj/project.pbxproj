@@ -35,7 +35,7 @@
 		86990D852B793C600094ACDC /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86990D842B793C600094ACDC /* TemplateViewController.swift */; };
 		86990D892B794E9B0094ACDC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86990D882B794E9B0094ACDC /* NetworkManager.swift */; };
 		86990D8B2B796D8D0094ACDC /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86990D8A2B796D8D0094ACDC /* ValidationError.swift */; };
-		86990D8E2B7993590094ACDC /* Simulator Screen Recording - iPhone 15 Pro - 2024-02-11 at 23.41.26.gif in Resources */ = {isa = PBXBuildFile; fileRef = 86990D8D2B7993590094ACDC /* Simulator Screen Recording - iPhone 15 Pro - 2024-02-11 at 23.41.26.gif */; };
+		86D3847E2B7E3E92007E48CC /* screencast.gif in Resources */ = {isa = PBXBuildFile; fileRef = 86D3847D2B7E3E92007E48CC /* screencast.gif */; };
 		86D637C12B73AB18008550D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637C02B73AB18008550D3 /* AppDelegate.swift */; };
 		86D637C32B73AB18008550D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D637C22B73AB18008550D3 /* SceneDelegate.swift */; };
 		86D637CA2B73AB19008550D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86D637C92B73AB19008550D3 /* Assets.xcassets */; };
@@ -100,8 +100,7 @@
 		86990D842B793C600094ACDC /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
 		86990D882B794E9B0094ACDC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		86990D8A2B796D8D0094ACDC /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
-		86990D8D2B7993590094ACDC /* Simulator Screen Recording - iPhone 15 Pro - 2024-02-11 at 23.41.26.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Simulator Screen Recording - iPhone 15 Pro - 2024-02-11 at 23.41.26.gif"; sourceTree = "<group>"; };
-		86D3847C2B7E3C13007E48CC /* screencast.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = screencast.mp4; sourceTree = "<group>"; };
+		86D3847D2B7E3E92007E48CC /* screencast.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = screencast.gif; sourceTree = "<group>"; };
 		86D637BD2B73AB18008550D3 /* SevenWindsCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SevenWindsCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D637C02B73AB18008550D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86D637C22B73AB18008550D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -259,8 +258,7 @@
 		86990D8C2B7992CF0094ACDC /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				86D3847C2B7E3C13007E48CC /* screencast.mp4 */,
-				86990D8D2B7993590094ACDC /* Simulator Screen Recording - iPhone 15 Pro - 2024-02-11 at 23.41.26.gif */,
+				86D3847D2B7E3E92007E48CC /* screencast.gif */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -452,8 +450,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86D3847E2B7E3E92007E48CC /* screencast.gif in Resources */,
 				86D637CD2B73AB19008550D3 /* LaunchScreen.storyboard in Resources */,
-				86990D8E2B7993590094ACDC /* Simulator Screen Recording - iPhone 15 Pro - 2024-02-11 at 23.41.26.gif in Resources */,
 				86D637CA2B73AB19008550D3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
